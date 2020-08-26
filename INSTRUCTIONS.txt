@@ -1,5 +1,0 @@
-1. Edit js/config.js for loading screen configurations
-2. Upload this folder on your webhost
-3. Configure your sv_loadingurl
-
-Have fun with your new loading screen :)
