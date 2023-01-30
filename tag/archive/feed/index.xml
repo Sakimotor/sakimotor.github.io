@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>archive &#8211; Saki&#039;s Romhacking Shenanigans</title>
+	<atom:link href="https://sakimotor.github.io/tag/archive/feed/" rel="self" type="application/rss+xml" />
+	<link>https://sakimotor.github.io</link>
+	<description>It is what it is!</description>
+	<lastBuildDate>Mon, 30 Jan 2023 18:44:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.1.1</generator>
+	<item>
+		<title>Modding The Silver Case (Part 2): Extracting &#038; Repacking</title>
+		<link>https://sakimotor.github.io/2023/01/28/modding-the-silver-case-part-2-extracting-repacking/</link>
+					<comments>https://sakimotor.github.io/2023/01/28/modding-the-silver-case-part-2-extracting-repacking/#disqus_thread</comments>
+		
+		<dc:creator><![CDATA[sakicore]]></dc:creator>
+		<pubDate>Sat, 28 Jan 2023 01:28:01 +0000</pubDate>
+				<category><![CDATA[Modding]]></category>
+		<category><![CDATA[Repacking]]></category>
+		<category><![CDATA[archive]]></category>
+		<category><![CDATA[ps4]]></category>
+		<category><![CDATA[psarc]]></category>
+		<category><![CDATA[unity]]></category>
+		<guid isPermaLink="false">https://sakimotor.github.io/?p=40</guid>
+
+					<description><![CDATA[In this post, I will explain how to work with the (not so) niche and proprietary .PSARC archive format, as well as the (even less) niche and proprietary Unity .assets archive format.]]></description>
+										<content:encoded><![CDATA[
+<p>Our <a href="https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/" data-type="post" data-id="23">previous </a>post explained how to prepare a game for modding. Today, it&#8217;s about time we do the actual modding part!</p>
+
+
+
+<p></p>
+
+
+
+<p>The game was made with <strong>Unity</strong>. As such, its mostly comprised of .assets files, just like the PC version, with one particularity: the heaviest (and most important) assets have been compressed within a <strong>.psarc</strong> archive, a proprietary format used by Sony games since the <em>PS3 </em>era.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/EqA99JfXIAAxS2p.png" alt="" class="wp-image-45" width="686" height="373"/></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/EqA-SheXUAQCh0x.png" alt="" class="wp-image-46" width="688" height="433"/><figcaption class="wp-element-caption"><em>General folder layout. The &#8220;Media&#8221; folder contains some .assets files, as well as a &#8220;StreamingAssets&#8221; folder which contains the game&#8217;s videos as .MP4s</em>.</figcaption></figure></div>
+
+
+<p></p>
+
+
+
+<p>In 2020, I used a tool named <strong><a href="https://github.com/IcySon55/Kuriimu/releases" data-type="URL" data-id="https://github.com/IcySon55/Kuriimu/releases">Karameru</a> </strong>to extract the .<em>psarc</em> archives. This time I used <a href="http://richwhitehouse.com/index.php?content=inc_projects.php&amp;showproject=91"><strong>Noesis</strong></a>, a tool widely-used to preview 3D models from different formats, but also for extracting some types of archives, which <em>.psarc</em> is part of.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1428" height="632" src="https://sakimotor.github.io/wp-content/uploads/2023/01/Noesis64_yrB110L5Mw.png" alt="" class="wp-image-48"/><figcaption class="wp-element-caption"><em>Right-clicking on the archive and selecting &#8220;Export&#8221; allows us to extract it wherever we want.</em></figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p>Once the archive is extracted, we can treat its contents like a usual <em>Unity </em>game folder. Unfortunately, this means more extracting and repacking but it won&#8217;t be a problem, as this time we have the whole Unity modding community behind our back!</p>
+
+
+
+<p> My favorite tool for extracting <em>Unity .assets</em> files is <a href="https://github.com/Perfare/AssetStudio" data-type="URL" data-id="https://github.com/Perfare/AssetStudio"><strong>AssetStudio</strong></a>, a software that has been faithful to me since 2019, when I first used it on the <em>PC </em>version of the game. It&#8217;s very easy of use for previewing and extracting the contents within the archives, but it unfortunately does not support reimporting/repacking.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1920" height="1040" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image.png" alt="" class="wp-image-51"/><figcaption class="wp-element-caption"><em>When we use the &#8220;Load folder&#8221; option on our extracted archive, we can see all the TextAsset (JSON messages) and Texture2D (image textures) we need to replace. We can extract them by using the &#8220;Export&#8221; option</em>.</figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p>Once the files we want are extracted, we can edit them to our leisure. I won&#8217;t elaborate much on this part, but one thing I can say is that <em>AssetStudio </em>does its best to convert the assets into commonly-used formats: <em>.txt/.json</em> files for the <em>TextAsset </em>files, <em>.png</em> files for the <em>Texture2D</em> ones,  <em>.wav </em>for the <em>AudioClip</em>&#8230; Surely, we won&#8217;t have much research works to find software able to work with these file formats!</p>
+
+
+
+<p>Anyway, after editing the extracted filed to our will, we will reimport them with a russian tool called <strong><a href="https://www.dropbox.com/s/j0dyaqogc7w2gbn/UnityEX_Advanced.rar" data-type="URL" data-id="https://www.dropbox.com/s/j0dyaqogc7w2gbn/UnityEX_Advanced.rar">UnityEX</a> </strong>(<a href="https://disk.yandex.ru/d/C7Vzo44UDXiq-w" data-type="URL" data-id="https://disk.yandex.ru/d/C7Vzo44UDXiq-w">YandexDisk</a> mirror). Just like <em>AssetStudio</em>, it&#8217;s a tool I got familiar with in 2019, when I worked with the <em>PC </em>version. It has been helpful enough for me to donate to its developer in order to get all the features of the program, such as the <em>Unity </em>2020-2021 support (more on that on the official forum <a href="https://forum.zoneofgames.ru/topic/36240-unityex/" data-type="URL" data-id="https://forum.zoneofgames.ru/topic/36240-unityex/">thread</a>), but we can work with the freeware version as well, since the game has been compiled with <em>Unity</em>&#8216;s 2016-2017 SDK!</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="883" height="761" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-2.png" alt="" class="wp-image-53"/><figcaption class="wp-element-caption"><em>UnityEX in action on the game&#8217;s &#8220;resources.assets&#8221; archive.</em></figcaption></figure></div>
+
+
+<p>Unlike <em>AssetStudio</em>, <em>UnityEX</em> only opens one file at a time, which doesn&#8217;t matter since all the content we need is stored within the <em>resources.assets</em> file. When we open an archive within UnityEX, we can extract the files by right-clicking them, then by pressing &#8220;Extract with convert or Raw&#8221;: this will convert a file to a more common extension if it&#8217;s known (like <em>AssetStudio</em> does), or leave it as-is. </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-1.png" alt="" class="wp-image-52" width="665" height="695"/><figcaption class="wp-element-caption"><em>The extracted files go to a new folder named &#8220;<em>Unity_Assets_Files</em>&#8220;, which will contain another folder bearing the same name as our <em>.assets</em> file, in this case <em>resources</em>.</em></figcaption></figure></div>
+
+
+<p>By hitting the &#8220;<em>Import all files&#8221;</em> button in <em>UnityEX</em>, the program will look all the files from the folder mentioned above, compare the filenames to the ones within the opened <em>.assets </em>archive, then replace each matching occurence. Any <em>.png</em> file is automatically converted into a <em>.tex Texture2D</em> file, then reinserted in the archive. If the program finds a filename that doesn&#8217;t correspond to anything in the archive, it will give a warning and askip if we want to continue anyway. </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="883" height="761" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-3.png" alt="" class="wp-image-54"/><figcaption class="wp-element-caption"><em>You might not see the difference, but the green bar being halfway through is a sign of the importing process being in progress.</em></figcaption></figure></div>
+
+
+<p>Now that the <em>resources.assets</em> has been edited, it&#8217;s time to do the whole process&#8230; Backwards! First, we need to  repack the folder containing the extracted <em>.assets</em> files back to a .psarc file. This time, instead of <em>Karameru</em>,  I used <a href="https://www.ghisler.com/">Total Commander</a>, a freeware file manager which had the benefit of supporting <em>.psarc </em>repacking thanks to a third-party <a href="http://totalcmd.net/plugring/PSARC.html">plugin</a> by <em>BEKETATA</em>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="569" height="410" src="https://sakimotor.github.io/wp-content/uploads/2023/01/TOTALCMD64_5EmDLZpBdO.png" alt="" class="wp-image-55"/><figcaption class="wp-element-caption"><em>Right-clicking on the folder, then clicking &#8220;File &gt; Pack&#8230;&#8221; does the trick.</em></figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p>And&#8230; that&#8217;s it! Now, we have our modded <em>archive.psarc</em> file, ready to get inserted back into the game. As there are multiple ways of doing that, which both take a fair amount of time and dedication, I will document them in a final post, one that will get more focused on the <em>PS4</em>-side manipulation than the <em>PC</em> one.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="603" height="66" src="https://sakimotor.github.io/wp-content/uploads/2023/01/explorer_SMSLQwpTbO.png" alt="" class="wp-image-56"/><figcaption class="wp-element-caption"><em>Our custom videos folder, as well as our modded archive, are ready to go. The archive_og.psarc file is a mere emergency backup.</em></figcaption></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sakimotor.github.io/2023/01/28/modding-the-silver-case-part-2-extracting-repacking/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Modding The Silver Case (PS4) Part 1: Console Modding &#038; Game Dumping</title>
+		<link>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/</link>
+					<comments>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/#disqus_thread</comments>
+		
+		<dc:creator><![CDATA[sakicore]]></dc:creator>
+		<pubDate>Thu, 26 Jan 2023 19:19:51 +0000</pubDate>
+				<category><![CDATA[Repacking]]></category>
+		<category><![CDATA[archive]]></category>
+		<category><![CDATA[fpkg]]></category>
+		<category><![CDATA[homebrew]]></category>
+		<category><![CDATA[jailbreak]]></category>
+		<category><![CDATA[pkg]]></category>
+		<category><![CDATA[ps4]]></category>
+		<guid isPermaLink="false">https://sakimotor.github.io/?p=23</guid>
+
+					<description><![CDATA[This post will explain how to jailbreak a PS4, dumping the games and reinstall them as "Fake" PKGs.]]></description>
+										<content:encoded><![CDATA[
+<p>As some of you might know, a few years ago I, along with my homies <a href="https://twitter.com/sytarie" data-type="URL" data-id="https://twitter.com/sytarie">Sytarie</a> and <a href="https://www.youtube.com/@RapaOST" data-type="URL" data-id="https://www.youtube.com/@RapaOST">Rapa</a>, made a french <a href="http://projectsilver.free.fr/" data-type="URL" data-id="http://projectsilver.free.fr/">translation</a> for <em>The Silver Case</em> on Steam. It wasn&#8217;t perfect in any way but I still cherish the project to this day! As I was able to acquire a copy of the <em>Silver2425</em> compilation for my PS4 a few years ago, I decided that porting our patch to as many versions as we can would be a good thing. My first (unfruitful) attempt at this was done two years ago, it is documented in the following Twitter <a href="https://twitter.com/SakiMeguro/status/1342140829696225281">thread</a>. </p>
+
+
+
+<p>In this post, I will go through the steps we must follow in order to play a modded game on a PS4:</p>
+
+
+
+<ul>
+<li>First of all, we need a <em>FAT32 (or exFAT)</em>-formatted <strong>USB Drive</strong>. 8GB should be enough for The Silver Case but the bigger, the better!</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/explorer_sU3eH9zOzY.png" alt="" class="wp-image-28" width="509" height="521"/><figcaption class="wp-element-caption"><em>My FAT32-formatted USB Drive (also used as an emergency GParted  distro)</em></figcaption></figure></div>
+
+
+<ul>
+<li>As of the console, we need a <strong>jailbreakable</strong> <em>PS4</em>. Firmwares <strong>5.05, <strong>6.72, 7.02, 7.50~7.55</strong> and <strong>9.00</strong></strong>  are <a href="https://wololo.net/ps4-jailbreak-ps4-cfw4dummies/" data-type="URL" data-id="https://wololo.net/ps4-jailbreak-ps4-cfw4dummies/">compatible</a>. If you&#8217;re on a lower firmware, you should <a href="https://wololo.net/2021/12/14/ps4-how-to-manually-update-to-firmware-9-00/" data-type="URL" data-id="https://wololo.net/2021/12/14/ps4-how-to-manually-update-to-firmware-9-00/">upgrade</a> to the latest exploitable version. If you&#8217;re on a higher firmware, you&#8217;re out of lock and need to wait for an exploit to be found.<mark style="background-color:rgba(0, 0, 0, 0);color:#f23434" class="has-inline-color"> <strong>DO NOT TRUST THE &#8220;DOWNGRADER&#8221; SOFTWARES, IT&#8217;S A SCAM!</strong></mark></li>
+</ul>
+
+
+
+<ul>
+<li>If the console is compatible, we will need to run a <strong>HEN</strong> exploit on boot in order to enable the jailbreak functionnalities. This is done by running <em>webkit</em> exploits either from a local server (<a href="https://github.com/Al-Azif/ps4-exploit-host" data-type="URL" data-id="https://github.com/Al-Azif/ps4-exploit-host">self-hosted</a> <a href="https://github.com/GoldHEN/GoldHEN">exploits</a>), or from a website that hosts them (example <a href="http://karo218.ir/" data-type="URL" data-id="http://karo218.ir/">here</a>). The most well-known HEN enablers are <strong>GoldHEN</strong> and <strong>MIRA</strong>, both give access to the functionnalities we need.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_ZckMo2RV68.png" alt="" class="wp-image-27" width="637" height="314"/><figcaption class="wp-element-caption"><em>Example of a payload loading site</em></figcaption></figure></div>
+
+
+<ul>
+<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in your console&#8217;s Settings &gt; Debug Settings &gt; Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the Karo menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game (in our case, <em>The Silver Case</em>) will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_9oGr1VGBXd.png" alt="" class="wp-image-29" width="-521" height="-304"/><figcaption class="wp-element-caption"><em>Game/Update Dumping Payload</em></figcaption></figure></div>
+
+
+<ul>
+<li>At the end of the process, we have a <em>CUSAXXXXX-app</em> folder on your USB Drive. If the game has updates, we will end up with <em>CUSAXXXXX-patch</em> folders as well.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="613" height="89" src="https://sakimotor.github.io/wp-content/uploads/2023/01/explorer_vTdEcReyak.png" alt="" class="wp-image-30"/><figcaption class="wp-element-caption"><em>My goodness gracious</em></figcaption></figure></div>
+
+
+<ul>
+<li>The next step is rebuilding the dumped games (and updates) into <strong>Fake PKGs</strong> by using the <a href="https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87" data-type="URL" data-id="https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87">Fake PKG Tools</a>: we generate a .<em>gp4 </em>file for the base game with <em>gengp4_app.exe</em>, then we open the resulting <em>.gp4</em> file within <em>orbis-pub-gen.exe</em> and click on the &#8220;Build&#8221; button on the top right corner. We then repeat the process for all the updates by running <em>gengp4_patch.exe</em> instead.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="864" height="557" src="https://sakimotor.github.io/wp-content/uploads/2023/01/orbis-pub-gen_kfN9aOooql.png" alt="" class="wp-image-31"/><figcaption class="wp-element-caption"><em>Really easy to miss, but the Build button is right in front of you!</em></figcaption></figure></div>
+
+
+<ul>
+<li>We can then install the generated <em>PKG</em> files back on the PS4 by putting them on your USB Drive, then going into &#8220;Settings &gt; Debug Settings &gt; Package Installer&#8221;.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" src="http://www.minihere.com/wp-content/uploads/2018/05/ps4-package-installer.png" alt="" width="-321" height="-180"/><figcaption class="wp-element-caption"><em>Image randomly taken from Google, too lazy to screenshot my own console</em></figcaption></figure></div>
+
+
+<p>We are good to go! Now that our game has the default passcode <em>0000000000000000&#8230;0</em>, we can finally install whatever modded files we want over it.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

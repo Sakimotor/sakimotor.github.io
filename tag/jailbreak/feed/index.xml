@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jailbreak &#8211; Saki&#039;s Romhacking Shenanigans</title>
+	<atom:link href="https://sakimotor.github.io/tag/jailbreak/feed/" rel="self" type="application/rss+xml" />
+	<link>https://sakimotor.github.io</link>
+	<description>It is what it is!</description>
+	<lastBuildDate>Mon, 30 Jan 2023 17:38:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.1.1</generator>
+	<item>
+		<title>Modding The Silver Case (PS4) Part 1: Console Modding &#038; Game Dumping</title>
+		<link>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/</link>
+					<comments>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/#disqus_thread</comments>
+		
+		<dc:creator><![CDATA[sakicore]]></dc:creator>
+		<pubDate>Thu, 26 Jan 2023 19:19:51 +0000</pubDate>
+				<category><![CDATA[Repacking]]></category>
+		<category><![CDATA[archive]]></category>
+		<category><![CDATA[fpkg]]></category>
+		<category><![CDATA[homebrew]]></category>
+		<category><![CDATA[jailbreak]]></category>
+		<category><![CDATA[pkg]]></category>
+		<category><![CDATA[ps4]]></category>
+		<guid isPermaLink="false">https://sakimotor.github.io/?p=23</guid>
+
+					<description><![CDATA[This post will explain how to jailbreak a PS4, dumping the games and reinstall them as "Fake" PKGs.]]></description>
+										<content:encoded><![CDATA[
+<p>As some of you might know, a few years ago I, along with my homies <a href="https://twitter.com/sytarie" data-type="URL" data-id="https://twitter.com/sytarie">Sytarie</a> and <a href="https://www.youtube.com/@RapaOST" data-type="URL" data-id="https://www.youtube.com/@RapaOST">Rapa</a>, made a french <a href="http://projectsilver.free.fr/" data-type="URL" data-id="http://projectsilver.free.fr/">translation</a> for <em>The Silver Case</em> on Steam. It wasn&#8217;t perfect in any way but I still cherish the project to this day! As I was able to acquire a copy of the <em>Silver2425</em> compilation for my PS4 a few years ago, I decided that porting our patch to as many versions as we can would be a good thing. My first (unfruitful) attempt at this was done two years ago, it is documented in the following Twitter <a href="https://twitter.com/SakiMeguro/status/1342140829696225281">thread</a>. </p>
+
+
+
+<p>In this post, I will go through the steps we must follow in order to play a modded game on a PS4:</p>
+
+
+
+<ul>
+<li>First of all, we need a <em>FAT32 (or exFAT)</em>-formatted <strong>USB Drive</strong>. 8GB should be enough for The Silver Case but the bigger, the better!</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/explorer_sU3eH9zOzY.png" alt="" class="wp-image-28" width="509" height="521"/><figcaption class="wp-element-caption"><em>My FAT32-formatted USB Drive (also used as an emergency GParted  distro)</em></figcaption></figure></div>
+
+
+<ul>
+<li>As of the console, we need a <strong>jailbreakable</strong> <em>PS4</em>. Firmwares <strong>5.05, <strong>6.72, 7.02, 7.50~7.55</strong> and <strong>9.00</strong></strong>  are <a href="https://wololo.net/ps4-jailbreak-ps4-cfw4dummies/" data-type="URL" data-id="https://wololo.net/ps4-jailbreak-ps4-cfw4dummies/">compatible</a>. If you&#8217;re on a lower firmware, you should <a href="https://wololo.net/2021/12/14/ps4-how-to-manually-update-to-firmware-9-00/" data-type="URL" data-id="https://wololo.net/2021/12/14/ps4-how-to-manually-update-to-firmware-9-00/">upgrade</a> to the latest exploitable version. If you&#8217;re on a higher firmware, you&#8217;re out of lock and need to wait for an exploit to be found.<mark style="background-color:rgba(0, 0, 0, 0);color:#f23434" class="has-inline-color"> <strong>DO NOT TRUST THE &#8220;DOWNGRADER&#8221; SOFTWARES, IT&#8217;S A SCAM!</strong></mark></li>
+</ul>
+
+
+
+<ul>
+<li>If the console is compatible, we will need to run a <strong>HEN</strong> exploit on boot in order to enable the jailbreak functionnalities. This is done by running <em>webkit</em> exploits either from a local server (<a href="https://github.com/Al-Azif/ps4-exploit-host" data-type="URL" data-id="https://github.com/Al-Azif/ps4-exploit-host">self-hosted</a> <a href="https://github.com/GoldHEN/GoldHEN">exploits</a>), or from a website that hosts them (example <a href="http://karo218.ir/" data-type="URL" data-id="http://karo218.ir/">here</a>). The most well-known HEN enablers are <strong>GoldHEN</strong> and <strong>MIRA</strong>, both give access to the functionnalities we need.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_ZckMo2RV68.png" alt="" class="wp-image-27" width="637" height="314"/><figcaption class="wp-element-caption"><em>Example of a payload loading site</em></figcaption></figure></div>
+
+
+<ul>
+<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in your console&#8217;s Settings &gt; Debug Settings &gt; Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the Karo menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game (in our case, <em>The Silver Case</em>) will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_9oGr1VGBXd.png" alt="" class="wp-image-29" width="-521" height="-304"/><figcaption class="wp-element-caption"><em>Game/Update Dumping Payload</em></figcaption></figure></div>
+
+
+<ul>
+<li>At the end of the process, we have a <em>CUSAXXXXX-app</em> folder on your USB Drive. If the game has updates, we will end up with <em>CUSAXXXXX-patch</em> folders as well.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="613" height="89" src="https://sakimotor.github.io/wp-content/uploads/2023/01/explorer_vTdEcReyak.png" alt="" class="wp-image-30"/><figcaption class="wp-element-caption"><em>My goodness gracious</em></figcaption></figure></div>
+
+
+<ul>
+<li>The next step is rebuilding the dumped games (and updates) into <strong>Fake PKGs</strong> by using the <a href="https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87" data-type="URL" data-id="https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87">Fake PKG Tools</a>: we generate a .<em>gp4 </em>file for the base game with <em>gengp4_app.exe</em>, then we open the resulting <em>.gp4</em> file within <em>orbis-pub-gen.exe</em> and click on the &#8220;Build&#8221; button on the top right corner. We then repeat the process for all the updates by running <em>gengp4_patch.exe</em> instead.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="864" height="557" src="https://sakimotor.github.io/wp-content/uploads/2023/01/orbis-pub-gen_kfN9aOooql.png" alt="" class="wp-image-31"/><figcaption class="wp-element-caption"><em>Really easy to miss, but the Build button is right in front of you!</em></figcaption></figure></div>
+
+
+<ul>
+<li>We can then install the generated <em>PKG</em> files back on the PS4 by putting them on your USB Drive, then going into &#8220;Settings &gt; Debug Settings &gt; Package Installer&#8221;.</li>
+</ul>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" src="http://www.minihere.com/wp-content/uploads/2018/05/ps4-package-installer.png" alt="" width="-321" height="-180"/><figcaption class="wp-element-caption"><em>Image randomly taken from Google, too lazy to screenshot my own console</em></figcaption></figure></div>
+
+
+<p>We are good to go! Now that our game has the default passcode <em>0000000000000000&#8230;0</em>, we can finally install whatever modded files we want over it.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
