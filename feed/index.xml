@@ -12,7 +12,7 @@
 	<atom:link href="https://sakimotor.github.io/feed/" rel="self" type="application/rss+xml" />
 	<link>https://sakimotor.github.io</link>
 	<description>It is what it is!</description>
-	<lastBuildDate>Mon, 30 Jan 2023 21:53:57 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 01 Feb 2023 00:58:21 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -123,7 +123,7 @@
 
 
 
-<p>Now, for each game we want to modify, we simply need to create a folder bearing the game&#8217;s <em><strong>TitleID</strong></em> inside of <em><code><strong>/data/GoldHEN/plugins/AFR</strong></code></em>, and place all of our modified files here.</p>
+<p>For each game we want to modify, we simply need to create a folder bearing the game&#8217;s <em><strong>TitleID</strong></em> inside of <em><code><strong>/data/GoldHEN/plugins/AFR</strong></code></em>, and place all of our modified files here.</p>
 
 
 
@@ -142,28 +142,36 @@
 
 
 
-<p>Now, about the ways of distributing the modded data, there&#8217;s quite a few ways, each with their pros and cons:</p>
+<p>There are a few ways of distributing our modded data to the public, each with their pros and cons:</p>
 
 
 
 <ul>
 <li>The most <em><strong>user-friendly</strong></em> way would be by <strong>repackaging the whole game</strong> and <strong>uploading the PKG</strong> on the internet: anyone with a jailbroken console could install it, but it&#8217;s not only expensive in terms of space usage (we upload the whole game), but also obviously clearly illegal (<em>we upload the whole game</em>). I would not recommend using that as an option, especially if you want your mod project to be publicly available.</li>
+</ul>
 
 
 
+<ul>
 <li>Another way would be by <strong>generating a custom update<em> </em></strong>so we would only need to distribute the files that we modified through a <em>Fake PKG</em>. Unfortunately, this method requires the user to dump their game and reinstall it as a <em>Fake PKG</em>, which isn&#8217;t optimal.</li>
+</ul>
 
 
 
+<ul>
 <li>The best <em><strong>compromise between legality and ease of use</strong></em> would be the <strong>AFR </strong>we mentionted before: we only need to distribute the edited files, which the user can then copy to their console in the <em><code><strong>/data/GoldHEN/plugins/AFR/CUSAXXXX</strong></code></em>folder. </li>
+</ul>
 
 
 
+<ul>
 <li>Even <em><strong>better </strong></em>legally, by using <em>Delta Patching</em> tools, such as <strong><em><a href="https://www.romhacking.net/utilities/598/">xdelta </a></em></strong>or <strong><em><a href="https://github.com/Moodkiller/xdelta3-gui-2.0" data-type="URL" data-id="https://github.com/Moodkiller/xdelta3-gui-2.0">xdelta3</a></em></strong>, instead of distributing the files directly, you can distribute patches that will <strong>modify the original files</strong> with the new data, which means the user would have to own their own dump, and that we don&#8217;t technically upload any (usable as a standalone) illegal content. </li>
+</ul>
 
 
 
-<li>Another advantage of the <em>AFR </em>method is that, by only distributing the patched part of a file, we can drastically reduce the size of the patch we are going to share! Be warned though, this method requires the user to apply the patches by themselves before obtaining the modded file, and that an xdelta patch (to my knowledge) is applied to a single file, which, in case of a patch that modifies a lot of files,would make us generate the patches one by one, and the user would also need to apply them one by one!  (<em><strong>these cons could be solved by making Bash/Powershell/Python&#8230; scripts that handle the patching for the user, as xdelta handles CLI with no problem.)</strong></em></li>
+<ul>
+<li>Another advantage is is that by only distributing the patched part of a file, we can drastically reduce the size of the patch we are going to share! Be warned though, this method requires the user to apply the patches <strong>by themselves</strong> before obtaining the modded file, and that an xdelta patch (to my knowledge) is applied to a <strong>single file</strong>, which, in case of a patch that modifies a lot of files,would make us generate the patches <strong>one by one</strong>, and the user would also need to apply them<strong> one by one</strong>!  (<em><strong>these cons could be solved by making Bash/Powershell/Python&#8230; scripts that handle the patching for the user, as xdelta handles CLI with no problem.)</strong></em></li>
 </ul>
 
 
@@ -173,10 +181,6 @@
 
 <div class="wp-block-image">
 <figure class="aligncenter size-full"><img decoding="async" width="599" height="47" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-5.png" alt="" class="wp-image-78" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-5.png 599w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-5-300x24.png 300w" sizes="(max-width: 599px) 100vw, 599px" /><figcaption class="wp-element-caption"><em>The difference speaks for itself</em>!</figcaption></figure></div>
-
-
-<p></p>
-
 
 
 <p></p>
@@ -358,7 +362,7 @@
 
 
 <ul>
-<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in your console&#8217;s Settings &gt; Debug Settings &gt; Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the Karo menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game (in our case, <em>The Silver Case</em>) will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
+<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in the console&#8217;s Settings > Debug Settings > Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the <strong><em>Karo </em></strong>menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
 </ul>
 
 
@@ -413,23 +417,55 @@
 
 					<description><![CDATA[A short story about me, my passions, and the purpose of this blog.]]></description>
 										<content:encoded><![CDATA[
-<p>Hello there. If you&#8217;re reading this without knowing me yet, I&#8217;m <strong>Saki</strong>, a (as of this post) 21 year old French guy with a fair amount of knowledge when it comes to programming (<em>C, Java, Python</em> and even a slight amount of <em>assembly</em>) and, most importantly, someone who&#8217;s <a href="https://www.youtube.com/channel/UCsIqSsvvtAXmF8X9Lcx9tYg" data-type="URL" data-id="https://www.youtube.com/channel/UCsIqSsvvtAXmF8X9Lcx9tYg"><em>really </em>into video game music</a>.  Why specify that for a blog (supposedly) about <em>romhacking </em>? The answer to that is easier than you might think!</p>
+<p>Hello there. If you&#8217;re reading this without knowing me yet, I&#8217;m <strong>Saki</strong>, a (as of this post) 21 year old French guy with a fair amount of knowledge when it comes to programming (<em>C, Java, Python</em> and even a slight amount of <em>assembly</em>) and, most importantly, someone who&#8217;s <a href="https://www.youtube.com/channel/UCsIqSsvvtAXmF8X9Lcx9tYg" data-type="URL" data-id="https://www.youtube.com/channel/UCsIqSsvvtAXmF8X9Lcx9tYg"><em>really </em>into video game music</a>.  Why specify that for a blog (supposedly) about <em>romhacking </em>? The answer is easier than you might think!</p>
 
 
 
-<p>First of all, a lot of games tend to not have an official album with their soundtrack released at all, no matter how famous the compositions might be. Take <a href="https://vgmdb.net/forums/showthread.php?t=1977" data-type="URL" data-id="https://vgmdb.net/artist/1301">Ecco The Dolphin: Defender Of The Future</a> as an example: the game is widely-known for its gorgeous compositions made by Tim Follin &amp; Attila Heger, yet we are still to have an official release, truly a shame. </p>
+<p>First of all, a lot of games tend to not have an official soundtrack album<strong>  at all</strong>, no matter how famous the compositions might be. Take <a href="https://vgmdb.net/forums/showthread.php?t=1977" data-type="URL" data-id="https://vgmdb.net/artist/1301"><em>Ecco The Dolphin: Defender Of The Future</em></a> as an example: the game is widely-known for its gorgeous music made by <strong><em>Tim Follin &amp; Attila Heger</em></strong>, yet we are still to have an official release, truly a shame. </p>
 
 
 
-<p>Secondly, some games had a <em>soundtrack</em> released, but it was unfortunately not faithful to how it sounded ingame. This is a common occurence with the old releases, such as the Namco GSM collections, or even the obscure Amiga shoot&#8217;em&#8217;up <a href="https://vgmdb.net/album/42332" data-type="URL" data-id="https://vgmdb.net/album/42332">Apidiya </a>(how Techno Party sounds on the <a href="https://www.youtube.com/watch?v=Q3Ps3d-JiOg">album</a> vs how it sounds <a href="https://www.youtube.com/watch?v=57YNerorom8" data-type="URL" data-id="https://www.youtube.com/watch?v=57YNerorom8">ingame</a>, not quite the same).</p>
+<figure class="wp-block-image size-full"><img decoding="async" width="993" height="889" src="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_I2Om071Nnf.png" alt="" class="wp-image-89" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_I2Om071Nnf.png 993w, https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_I2Om071Nnf-300x269.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/firefox_I2Om071Nnf-768x688.png 768w" sizes="(max-width: 993px) 100vw, 993px" /><figcaption class="wp-element-caption"><em>130K views and still no official release smh smh</em></figcaption></figure>
 
 
 
-<p>As such,  it is common for game music to <em>Gamerip</em>, or simply put get a game&#8217;s music straight from its files, in order to have the faithful sound. This process is rarely a straightforward one, especially when it comes ot old and/or console games, which almost never leave the audio files in plain sight, but use either archives or proprietary audio codecs instead, either to optimize on space or to obfuscate the data,<em> probably both</em>. That&#8217;s when the <em>romhacking</em>/<em>reverse-engineering</em> part comes in!</p>
+<p>Secondly, some games had a <em>soundtrack</em> released, but it was not faithful to how it sounded ingame. This is a common occurence with the old releases, such as the Namco GSM collections, or even the obscure Amiga shoot&#8217;em&#8217;up <a href="https://vgmdb.net/album/42332" data-type="URL" data-id="https://vgmdb.net/album/42332">Apidiya </a>(how Techno Party sounds on the <a href="https://www.youtube.com/watch?v=Q3Ps3d-JiOg">album</a> vs how it sounds <a href="https://www.youtube.com/watch?v=57YNerorom8" data-type="URL" data-id="https://www.youtube.com/watch?v=57YNerorom8">ingame</a>, not quite the same).</p>
 
 
 
-<p>Since the used file formats are proprietary, and usually not readable as is, a great amount of effort has been put by numerous people throught time in order to document said formats, and come up with <em>tools</em> that can read the data, and even convert it to more common formats. Take the <em>Super Nintendo</em>&#8216;s .<em><a href="http://www.vgmpf.com/Wiki/index.php?title=SPC">SPC </a></em>format, which is conceptually not unlike a .<em>MIDI </em>file (don&#8217;t take my words on that, I&#8217;m not a musician nor a sound engineer). The format has been documented so much that it is now possible to read the audio on your own computer by using one of the dozens of available <a href="http://snesmusic.org/v2/players.php" data-type="URL" data-id="http://snesmusic.org/v2/players.php"><em>tools</em> </a>, even though you don&#8217;t even <em>own</em> an SNES!</p>
+<figure class="wp-block-image size-full"><img decoding="async" width="958" height="501" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-6.png" alt="" class="wp-image-93" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-6.png 958w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-6-300x157.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-6-768x402.png 768w" sizes="(max-width: 958px) 100vw, 958px" /><figcaption class="wp-element-caption"><em>Notice the &#8220;Arrangement&#8221; classification.</em></figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p>As such,  it is common for game music to be g<em>ameripped</em>,a process during which we extract a game&#8217;s music straight from the files, in order to have the faithful sound. </p>
+
+
+
+<p>This process is rarely a straightforward one, especially when it comes ot old and/or console games, which almost always use either archives or proprietary audio codecs , sometimes to optimize on space, sometimes to obfuscate the data,<em> often both</em>. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="632" height="96" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-7.png" alt="" class="wp-image-94" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-7.png 632w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-7-300x46.png 300w" sizes="(max-width: 632px) 100vw, 632px" /><figcaption class="wp-element-caption"><em>Do I look like a know what an RPGMVO is ?</em></figcaption></figure>
+
+
+
+<p>That&#8217;s when the <em>romhacking</em>/<em>reverse-engineering</em> part comes in! Since the used file formats are proprietary, and usually not readable as is, a great amount of effort has been put by numerous people through time in order to document said formats, and come up with <em>tools</em> that can read the data, and even convert it to more common formats. </p>
+
+
+
+<p>Take the <em>Super Nintendo</em>&#8216;s .<em><a href="http://www.vgmpf.com/Wiki/index.php?title=SPC">SPC </a></em>format for example, which is conceptually not unlike a .<em>MIDI </em>file (don&#8217;t take my words on that, I&#8217;m not a musician nor a sound engineer). The format has been documented so much that it is now possible to read the audio on your own computer by using one of the dozens of available <a href="http://snesmusic.org/v2/players.php" data-type="URL" data-id="http://snesmusic.org/v2/players.php"><em>tools</em> </a>, even if you don&#8217;t even <em>own</em> an SNES!</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="293" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-8-1024x293.png" alt="" class="wp-image-95" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-8-1024x293.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-8-300x86.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-8-768x220.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-8-1536x439.png 1536w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-8.png 1745w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>And that&#8217;s not even all the .SPC decoders you can find, only the ones listed on SNESMusic.org!</em></figcaption></figure>
+
+
+
+<p></p>
 
 
 
@@ -437,11 +473,31 @@
 
 
 
-<p>When I play some games, mostly English ones but sometimes Japanese as well ( I don&#8217;t speak that language unfortunately), the thought &#8220;<em>hmmmm I wish this was translated in French&#8221;</em> often comes to my mind. For japanese games with voice acting, I also often think about making <em>undubbed</em> versions on their western counterparts (i.e modifying the game to use the japanese voices as it wasn&#8217;t a standard until the <em>late-PS3</em> era). Because of that, I&#8217;ve looked unto various games, various file formats, by using a plethora of tools available on <em><a href="https://zenhax.com/" data-type="URL" data-id="https://zenhax.com/">ZenHax</a>, <a href="https://forum.xentax.com/" data-type="URL" data-id="https://forum.xentax.com/">Xentax</a>, <a href="https://www.romhacking.net/">ROMhacking.ne</a></em><a href="https://www.romhacking.net/"><em>t</em></a> and whatnot, sometimes with mitigated success, but mostly with complete failure at the end of the day.</p>
+<p>When I play some games, mostly English ones but sometimes Japanese as well ( I don&#8217;t speak that language unfortunately), the thought &#8220;<em>hmmmm I wish this was translated in French&#8221;</em> often comes to my mind. For Japanese games with voice acting, I also often think about making <em>undubbed</em> versions on their western counterparts (i.e modifying the game to use the japanese voices as it wasn&#8217;t a standard until the <em>late-PS3</em> era). </p>
+
+
+
+<p>Because of that, I&#8217;ve looked unto various games, various file formats, by using a plethora of tools available on <em><a href="https://zenhax.com/" data-type="URL" data-id="https://zenhax.com/">ZenHax</a>, <a href="https://forum.xentax.com/" data-type="URL" data-id="https://forum.xentax.com/">Xentax</a>, <a href="https://www.romhacking.net/">ROMhacking.ne</a></em><a href="https://www.romhacking.net/"><em>t</em></a> and whatnot, sometimes with mitigated success, but mostly with complete failure at the end of the day.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="520" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-9-1024x520.png" alt="" class="wp-image-96" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-9-1024x520.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-9-300x152.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-9-768x390.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-9-1536x780.png 1536w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-9.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>My attempt at porting the <a href="https://www.omori-en-francais.com/" data-type="URL" data-id="https://www.omori-en-francais.com/">French</a> OMORI patch to the Switch version, notice how some text doesn&#8217;t fit and how the font is messed up.</em></figcaption></figure>
+
+
+
+<p></p>
 
 
 
 <p>However! All is not to throw away! Even if I didn&#8217;t manage to obtain the results I wanted, I still got to familiarize myself with a plethora of <em>romhacking</em> tools that might end being of use someday, either by myself (once I&#8217;ve acquired enough patience and experience), or someone else, who might be more competent, more patient, or simply more stubborn than me.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="915" height="416" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-10.png" alt="" class="wp-image-97" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-10.png 915w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-10-300x136.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-10-768x349.png 768w" sizes="(max-width: 915px) 100vw, 915px" /><figcaption class="wp-element-caption"><em>Behold, my &#8220;Dreamcast&#8221; folder after my (not very fruitful) attempt at porting the JP Space Channel 5 voices to the PAL version.</em></figcaption></figure>
+
+
+
+<p></p>
 
 
 

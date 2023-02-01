@@ -78,9 +78,38 @@ img.emoji {
 			<div id="menu-primary-container" class="menu-primary-container">
 				<div class="menu-inner-container">
 					<div id="menu-primary" class="menu-container menu-primary" role="navigation">
-    <div class="menu-unset"></div>
+    <nav class="menu"><ul id="menu-primary-items" class="menu-primary-items">
+<li id="menu-item-111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111"><a href="https://sakimotor.github.io/">Home</a></li>
+<li id="menu-item-110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-110"><a href="https://sakimotor.github.io/about/">About</a></li>
+</ul></nav>
 </div>
-														</div>
+										<ul class="social-media-icons">
+<li>					<a class="twitter" target="_blank" href="https://twitter.com/SakiMeguro">
+						<i class="fab fa-twitter" title="twitter"></i>
+						<span class="screen-reader-text">twitter</span>
+					</a>
+					</li>
+<li>					<a class="youtube" target="_blank" href="https://twitter.com/SakiMeguro">
+						<i class="fab fa-youtube" title="youtube"></i>
+						<span class="screen-reader-text">youtube</span>
+					</a>
+					</li>
+<li>					<a class="email" target="_blank" href="mailto:ma&#109;&#98;&#105;la&#50;00&#49;&#64;&#103;m&#97;&#105;l.com">
+						<i class="fas fa-envelope" title="email"></i>
+						<span class="screen-reader-text">email</span>
+					</a>
+				</li>
+<li>					<a class="steam" target="_blank" href="https://steamcommunity.com/id/sakimotor">
+						<i class="fab fa-steam" title="steam"></i>
+						<span class="screen-reader-text">steam</span>
+					</a>
+					</li>
+<li>					<a class="whatsapp" target="_blank" href="https://tenor.com/fr/view/whatsapp-asuka-gif-21532721">
+						<i class="fab fa-whatsapp" title="whatsapp"></i>
+						<span class="screen-reader-text">whatsapp</span>
+					</a>
+					</li>
+</ul>				</div>
 			</div>
 		</div>
 	</header>
@@ -106,7 +135,7 @@ img.emoji {
 	<a href="https://sakimotor.github.io/2023/01/30/modding-the-silver-case-part-3-replacing-distributing-the-mod/#disqus_thread"><span class="dsq-postid" data-dsqidentifier="67 http://localhost/wordpress/?p=67">Leave a Comment</span></a></span>		</div>
 	</div>		</div>
 		<div class="featured-image"><img width="1280" height="720" src="https://sakimotor.github.io/wp-content/uploads/2023/01/3-PS4-TheSilverCase-20230126232619-YouTube-0-18.jpeg" class="attachment-full size-full wp-post-image" alt="" decoding="async" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/3-PS4-TheSilverCase-20230126232619-YouTube-0-18.jpeg 1280w, https://sakimotor.github.io/wp-content/uploads/2023/01/3-PS4-TheSilverCase-20230126232619-YouTube-0-18-300x169.jpeg 300w, https://sakimotor.github.io/wp-content/uploads/2023/01/3-PS4-TheSilverCase-20230126232619-YouTube-0-18-1024x576.jpeg 1024w, https://sakimotor.github.io/wp-content/uploads/2023/01/3-PS4-TheSilverCase-20230126232619-YouTube-0-18-768x432.jpeg 768w" sizes="(max-width: 1280px) 100vw, 1280px"></div>		<div class="post-content">
-						
+			<p class="last-updated">Last updated on 1 February 2023 </p>			
 <p>Welcome to the final part of my series of post focused on the modding of a <em>PS4 </em>game!</p>
 
 
@@ -194,7 +223,7 @@ img.emoji {
 
 
 
-<p>Now, for each game we want to modify, we simply need to create a folder bearing the game&#8217;s <em><strong>TitleID</strong></em> inside of <em><code><strong>/data/GoldHEN/plugins/AFR</strong></code></em>, and place all of our modified files here.</p>
+<p>For each game we want to modify, we simply need to create a folder bearing the game&#8217;s <em><strong>TitleID</strong></em> inside of <em><code><strong>/data/GoldHEN/plugins/AFR</strong></code></em>, and place all of our modified files here.</p>
 
 
 
@@ -214,28 +243,36 @@ img.emoji {
 
 
 
-<p>Now, about the ways of distributing the modded data, there&#8217;s quite a few ways, each with their pros and cons:</p>
+<p>There are a few ways of distributing our modded data to the public, each with their pros and cons:</p>
 
 
 
 <ul>
 <li>The most <em><strong>user-friendly</strong></em> way would be by <strong>repackaging the whole game</strong> and <strong>uploading the PKG</strong> on the internet: anyone with a jailbroken console could install it, but it&#8217;s not only expensive in terms of space usage (we upload the whole game), but also obviously clearly illegal (<em>we upload the whole game</em>). I would not recommend using that as an option, especially if you want your mod project to be publicly available.</li>
+</ul>
 
 
 
+<ul>
 <li>Another way would be by <strong>generating a custom update<em> </em></strong>so we would only need to distribute the files that we modified through a <em>Fake PKG</em>. Unfortunately, this method requires the user to dump their game and reinstall it as a <em>Fake PKG</em>, which isn&#8217;t optimal.</li>
+</ul>
 
 
 
+<ul>
 <li>The best <em><strong>compromise between legality and ease of use</strong></em> would be the <strong>AFR </strong>we mentionted before: we only need to distribute the edited files, which the user can then copy to their console in the <em><code><strong>/data/GoldHEN/plugins/AFR/CUSAXXXX</strong></code></em>folder. </li>
+</ul>
 
 
 
+<ul>
 <li>Even <em><strong>better </strong></em>legally, by using <em>Delta Patching</em> tools, such as <strong><em><a href="https://www.romhacking.net/utilities/598/">xdelta </a></em></strong>or <strong><em><a href="https://github.com/Moodkiller/xdelta3-gui-2.0" data-type="URL" data-id="https://github.com/Moodkiller/xdelta3-gui-2.0">xdelta3</a></em></strong>, instead of distributing the files directly, you can distribute patches that will <strong>modify the original files</strong> with the new data, which means the user would have to own their own dump, and that we don&#8217;t technically upload any (usable as a standalone) illegal content. </li>
+</ul>
 
 
 
-<li>Another advantage of the <em>AFR </em>method is that, by only distributing the patched part of a file, we can drastically reduce the size of the patch we are going to share! Be warned though, this method requires the user to apply the patches by themselves before obtaining the modded file, and that an xdelta patch (to my knowledge) is applied to a single file, which, in case of a patch that modifies a lot of files,would make us generate the patches one by one, and the user would also need to apply them one by one!  (<em><strong>these cons could be solved by making Bash/Powershell/Python&#8230; scripts that handle the patching for the user, as xdelta handles CLI with no problem.)</strong></em>
+<ul>
+<li>Another advantage is is that by only distributing the patched part of a file, we can drastically reduce the size of the patch we are going to share! Be warned though, this method requires the user to apply the patches <strong>by themselves</strong> before obtaining the modded file, and that an xdelta patch (to my knowledge) is applied to a <strong>single file</strong>, which, in case of a patch that modifies a lot of files,would make us generate the patches <strong>one by one</strong>, and the user would also need to apply them<strong> one by one</strong>!  (<em><strong>these cons could be solved by making Bash/Powershell/Python&#8230; scripts that handle the patching for the user, as xdelta handles CLI with no problem.)</strong></em>
 </li>
 </ul>
 
@@ -247,10 +284,6 @@ img.emoji {
 <div class="wp-block-image">
 <figure class="aligncenter size-full"><img decoding="async" width="599" height="47" src="https://sakimotor.github.io/wp-content/uploads/2023/01/image-5.png" alt="" class="wp-image-78" srcset="https://sakimotor.github.io/wp-content/uploads/2023/01/image-5.png 599w, https://sakimotor.github.io/wp-content/uploads/2023/01/image-5-300x24.png 300w" sizes="(max-width: 599px) 100vw, 599px"><figcaption class="wp-element-caption"><em>The difference speaks for itself</em>!</figcaption></figure>
 </div>
-
-
-<p></p>
-
 
 
 <p></p>
@@ -293,7 +326,7 @@ img.emoji {
 </div>
 <!-- .overflow-container -->
 
-
+<button id="scroll-to-top" class="scroll-to-top"><span class="screen-reader-text">Scroll to the top</span><i class="fas fa-arrow-up"></i></button>
 <script type="text/javascript" id="dcl_comments-js-extra">
 /* <![CDATA[ */
 var countVars = {"disqusShortname":"sakimotor"};

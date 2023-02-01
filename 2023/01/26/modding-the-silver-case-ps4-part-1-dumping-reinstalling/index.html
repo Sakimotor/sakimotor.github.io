@@ -78,9 +78,38 @@ img.emoji {
 			<div id="menu-primary-container" class="menu-primary-container">
 				<div class="menu-inner-container">
 					<div id="menu-primary" class="menu-container menu-primary" role="navigation">
-    <div class="menu-unset"></div>
+    <nav class="menu"><ul id="menu-primary-items" class="menu-primary-items">
+<li id="menu-item-111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111"><a href="https://sakimotor.github.io/">Home</a></li>
+<li id="menu-item-110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-110"><a href="https://sakimotor.github.io/about/">About</a></li>
+</ul></nav>
 </div>
-														</div>
+										<ul class="social-media-icons">
+<li>					<a class="twitter" target="_blank" href="https://twitter.com/SakiMeguro">
+						<i class="fab fa-twitter" title="twitter"></i>
+						<span class="screen-reader-text">twitter</span>
+					</a>
+					</li>
+<li>					<a class="youtube" target="_blank" href="https://twitter.com/SakiMeguro">
+						<i class="fab fa-youtube" title="youtube"></i>
+						<span class="screen-reader-text">youtube</span>
+					</a>
+					</li>
+<li>					<a class="email" target="_blank" href="mailto:mam&#98;i&#108;a200&#49;&#64;&#103;ma&#105;l.&#99;o&#109;">
+						<i class="fas fa-envelope" title="email"></i>
+						<span class="screen-reader-text">email</span>
+					</a>
+				</li>
+<li>					<a class="steam" target="_blank" href="https://steamcommunity.com/id/sakimotor">
+						<i class="fab fa-steam" title="steam"></i>
+						<span class="screen-reader-text">steam</span>
+					</a>
+					</li>
+<li>					<a class="whatsapp" target="_blank" href="https://tenor.com/fr/view/whatsapp-asuka-gif-21532721">
+						<i class="fab fa-whatsapp" title="whatsapp"></i>
+						<span class="screen-reader-text">whatsapp</span>
+					</a>
+					</li>
+</ul>				</div>
 			</div>
 		</div>
 	</header>
@@ -106,7 +135,7 @@ img.emoji {
 	<a href="https://sakimotor.github.io/2023/01/26/modding-the-silver-case-ps4-part-1-dumping-reinstalling/#disqus_thread"><span class="dsq-postid" data-dsqidentifier="23 http://localhost/wordpress/?p=23">Leave a Comment</span></a></span>		</div>
 	</div>		</div>
 		<div class="featured-image"><img width="1920" height="1080" src="https://sakimotor.github.io/wp-content/uploads/2023/01/a14899f8-40bb-4655-87e0-39a9ac7cacfc.jpg" class="attachment-full size-full wp-post-image" alt="" decoding="async"></div>		<div class="post-content">
-			<p class="last-updated">Last updated on 30 January 2023 </p>			
+			<p class="last-updated">Last updated on 31 January 2023 </p>			
 <p>As some of you might know, a few years ago I, along with my homies <a href="https://twitter.com/sytarie" data-type="URL" data-id="https://twitter.com/sytarie">Sytarie</a> and <a href="https://www.youtube.com/@RapaOST" data-type="URL" data-id="https://www.youtube.com/@RapaOST">Rapa</a>, made a french <a href="http://projectsilver.free.fr/" data-type="URL" data-id="http://projectsilver.free.fr/">translation</a> for <em>The Silver Case</em> on Steam. It wasn&#8217;t perfect in any way but I still cherish the project to this day! As I was able to acquire a copy of the <em>Silver2425</em> compilation for my PS4 a few years ago, I decided that porting our patch to as many versions as we can would be a good thing. My first (unfruitful) attempt at this was done two years ago, it is documented in the following Twitter <a href="https://twitter.com/SakiMeguro/status/1342140829696225281">thread</a>. </p>
 
 
@@ -143,7 +172,7 @@ img.emoji {
 
 
 <ul>
-<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in your console&#8217;s Settings &gt; Debug Settings &gt; Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the Karo menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game (in our case, <em>The Silver Case</em>) will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
+<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in the console&#8217;s Settings > Debug Settings > Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the <strong><em>Karo </em></strong>menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
 </ul>
 
 
@@ -219,7 +248,7 @@ img.emoji {
 </div>
 <!-- .overflow-container -->
 
-
+<button id="scroll-to-top" class="scroll-to-top"><span class="screen-reader-text">Scroll to the top</span><i class="fas fa-arrow-up"></i></button>
 <script type="text/javascript" id="dcl_comments-js-extra">
 /* <![CDATA[ */
 var countVars = {"disqusShortname":"sakimotor"};

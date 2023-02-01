@@ -12,7 +12,7 @@
 	<atom:link href="https://sakimotor.github.io/tag/jailbreak/feed/" rel="self" type="application/rss+xml" />
 	<link>https://sakimotor.github.io</link>
 	<description>It is what it is!</description>
-	<lastBuildDate>Mon, 30 Jan 2023 17:38:21 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 31 Jan 2023 17:05:12 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -70,7 +70,7 @@
 
 
 <ul>
-<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in your console&#8217;s Settings &gt; Debug Settings &gt; Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the Karo menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game (in our case, <em>The Silver Case</em>) will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
+<li>Once the HEN exploit is active, we need to <strong>dump the original</strong> <strong>copy </strong>of the game, and it&#8217;s <strong>updates</strong> when needed. In order to do that,  <em>BinLoader </em>must be enabled by going in the console&#8217;s Settings > Debug Settings > Servers Setting, and then ticking the checkbox here. Once enabled, we can run a <em>Game Dumping</em> exploit  (the <strong><em>Karo </em></strong>menu linked earlier has it in the <em>Dumper Group</em> category). The next booted game will be dumped to the USB Drive plugged in the console. This process might take a while, maybe a bit less than an hour, but in the end we obtain a clean folder with all of the game&#8217;s files. This step is necessary as all the PS4 games are encrypted within PKG files locked by a passcode, and are only decrypted on runtime.</li>
 </ul>
 
 
