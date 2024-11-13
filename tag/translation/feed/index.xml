@@ -12,7 +12,7 @@
 	<atom:link href="https://sakimotor.github.io/tag/translation/feed/" rel="self" type="application/rss+xml" />
 	<link>https://sakimotor.github.io</link>
 	<description>It is what it is!</description>
-	<lastBuildDate>Wed, 13 Nov 2024 21:24:40 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 13 Nov 2024 21:47:40 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -86,11 +86,13 @@
 
 
 <div class="hcb_wrap"><pre class="prism line-numbers lang-bash" data-lang="Bash"><code>xextool -c u default.xex #Uncompresses the file
-xextool -c c default.xex #Compress modified file</code></pre></div>
+xextool -c c default.xex #Compress modified file
+xextool -e u default.xex #Decrypt the file
+xextool -e e default.xex #Ecnrypt modified file</code></pre></div>
 
 
 
-<p>The resulting uncompressed file has text that can be read through. Since the game uses the Shift-JIS encoding, rather than HxD or any other editor that would only have ASCII and a few Latin charsets, we will  use wxMEdit. Make sure you go to <strong>View &gt; Encoding</strong> and select Shift-JIS from there!</p>
+<p>The resulting decrypted file has text that can be read through. Since the game uses the Shift-JIS encoding, rather than HxD or any other editor that would only have ASCII and a few Latin charsets, we will  use wxMEdit. Make sure you go to <strong>View > Encoding</strong> and select Shift-JIS from there!</p>
 
 
 
