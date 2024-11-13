@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://sakimotor.github.io/wp-content/themes/oxtheme/style.css">
+    <title>Modding an Xbox 360 Executable (with Ghidra and a Hex Editor): In the making of an English Patch for Tetris: The Grand Master Ace &#8211; Saki&#039;s Romhacking Shenanigans</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="alternate" type="application/rss+xml" title="Saki&#039;s Romhacking Shenanigans &raquo; Feed" href="https://sakimotor.github.io/feed/">
+<link rel="alternate" type="application/rss+xml" title="Saki&#039;s Romhacking Shenanigans &raquo; Comments Feed" href="https://sakimotor.github.io/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Saki&#039;s Romhacking Shenanigans &raquo; Modding an Xbox 360 Executable (with Ghidra and a Hex Editor): In the making of an English Patch for Tetris: The Grand Master Ace Comments Feed" href="https://sakimotor.github.io/2024/11/13/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace/feed/">
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/sakimotor.github.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.2.2"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){p.clearRect(0,0,i.width,i.height),p.fillText(e,0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(t,0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s("🏳️‍⚧️","🏳️​⚧️")?!1:!s("🇺🇳","🇺​🇳")&&!s("🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!s("🫱🏻‍🫲🏿","🫱🏻​🫲🏿")}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="https://sakimotor.github.io/wp-includes/css/dist/block-library/style.min.css?ver=6.2.2" type="text/css" media="all">
+<style id="wp-block-library-theme-inline-css" type="text/css">.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-bottom:4px solid;border-top:4px solid;color:currentColor;margin-bottom:1.75em}.wp-block-pullquote cite,.wp-block-pullquote footer,.wp-block-pullquote__citation{color:currentColor;font-size:.8125em;font-style:normal;text-transform:uppercase}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote.is-style-plain{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:0 0 1em}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video{margin:0 0 1em}.wp-block-template-part.has-background{margin-bottom:0;margin-top:0;padding:1.25em 2.375em}</style>
+<link rel="stylesheet" id="classic-theme-styles-css" href="https://sakimotor.github.io/wp-includes/css/classic-themes.min.css?ver=6.2.2" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="hcb-style-css" href="https://sakimotor.github.io/wp-content/plugins/highlighting-code-block/build/css/hcb_style.css?ver=1.6.1" type="text/css" media="all">
+<style id="hcb-style-inline-css" type="text/css">:root{--hcb-font-size: 14px}:root{--hcb-font-size--mobile: 13px}:root{--hcb-font-family:Menlo, Consolas, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;}</style>
+<link rel="stylesheet" id="hcb-coloring-css" href="https://sakimotor.github.io/wp-content/plugins/highlighting-code-block/build/css/coloring_light.css?ver=1.6.1" type="text/css" media="all">
+<link rel="https://api.w.org/" href="https://sakimotor.github.io/wp-json/">
+<link rel="alternate" type="application/json" href="https://sakimotor.github.io/wp-json/wp/v2/posts/168">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sakimotor.github.io/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://sakimotor.github.io/wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 6.2.2">
+<link rel="canonical" href="https://sakimotor.github.io/2024/11/13/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace/">
+<link rel="shortlink" href="https://sakimotor.github.io/?p=168">
+<link rel="alternate" type="application/json+oembed" href="https://sakimotor.github.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsakimotor.github.io%2F2024%2F11%2F13%2Fmodding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://sakimotor.github.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsakimotor.github.io%2F2024%2F11%2F13%2Fmodding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace%2F#038;format=xml">
+		<style type="text/css" id="wp-custom-css">a:link{
+  text-decoration: none!important;
+}
+
+.wp-post-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 1em;
+	max-width: 80%;
+}
+
+#primary {
+	max-width: 90%;
+	margin: auto;
+}
+
+#secondary {
+	
+	display:none;
+}</style>
+		</head>
+<body class="post-template-default single single-post postid-168 single-format-standard wp-embed-responsive">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0 0.49803921568627"></fefuncr><fefuncg type="table" tablevalues="0 0.49803921568627"></fefuncg><fefuncb type="table" tablevalues="0 0.49803921568627"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0 1"></fefuncr><fefuncg type="table" tablevalues="0 1"></fefuncg><fefuncb type="table" tablevalues="0 1"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765"></fefuncr><fefuncg type="table" tablevalues="0 1"></fefuncg><fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0 1"></fefuncr><fefuncg type="table" tablevalues="0 0.27843137254902"></fefuncg><fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0 0"></fefuncr><fefuncg type="table" tablevalues="0 0.64705882352941"></fefuncg><fefuncb type="table" tablevalues="0 1"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0.78039215686275 1"></fefuncr><fefuncg type="table" tablevalues="0 0.94901960784314"></fefuncg><fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745"></fefuncr><fefuncg type="table" tablevalues="0 1"></fefuncg><fefuncb type="table" tablevalues="0.44705882352941 0.4"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tablevalues="0.098039215686275 1"></fefuncr><fefuncg type="table" tablevalues="0 0.66274509803922"></fefuncg><fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg>    <a href="#main-content" class="skip-link screen-reader-text">跳到内容</a>
+    <header>
+        <div class="container">
+            <h1><a href="https://sakimotor.github.io/">Saki&#039;s Romhacking Shenanigans</a></h1>
+            <p>It is what it is!</p>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                <span class="screen-reader-text">Menu</span>
+                <div class="menu-icon">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </button>
+            <nav role="navigation">
+                <ul id="primary-menu" class="nav-menu">
+                    <ul id="menu-menu" class="nav-menu">
+<li id="menu-item-111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111"><a href="https://sakimotor.github.io/">Home</a></li>
+<li id="menu-item-110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-110"><a rel="privacy-policy" href="https://sakimotor.github.io/about/">About</a></li>
+</ul>                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="content">
+        <div id="primary">
+
+<div id="primary" class="content-area">
+    <main id="main-content" class="site-main">
+
+        
+                <article id="post-168" class="post-168 post type-post status-publish format-standard has-post-thumbnail hentry category-modding category-non-classe category-romhacking tag-ghidra tag-hex tag-patching tag-reverse-engineering tag-translation tag-wxmedit tag-xbox360 tag-xextool">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Modding an Xbox 360 Executable (with Ghidra and a Hex Editor): In the making of an English Patch for Tetris: The Grand Master Ace</h1>
+                        <div class="entry-meta">
+                            <span class="posted-on">发布于 13 November 2024</span> |
+                            <span class="byline">作者 sakicore</span> |
+                            <span class="cat-links">分类: <a href="https://sakimotor.github.io/category/modding/" rel="category tag">Modding</a>, <a href="https://sakimotor.github.io/category/non-classe/" rel="category tag">Non classé</a>, <a href="https://sakimotor.github.io/category/romhacking/" rel="category tag">Romhacking</a></span>
+                        </div>
+                    </header>
+
+                    <div class="entry-content">
+                        <img width="1024" height="576" src="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_FcbgF86KMO-1024x576.png" class="attachment-large size-large wp-post-image" alt="tgm_ace_logo" decoding="async" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_FcbgF86KMO-1024x576.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_FcbgF86KMO-300x169.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_FcbgF86KMO-768x432.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_FcbgF86KMO.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px">
+<p>Hello everyone, today I am glad to announce <strong><a href="https://github.com/Sakimotor/tgma_eng">the completion of a patch</a></strong> for the Xbox360-exclusive Arika game <em>Tetris: The Grand Master Ace</em>, as well as an English retranslation of the game&#8217;s <strong><a href="https://sakimotor.github.io/tgma_eng/">promotional website</a></strong> ! The patch can be applied to the retail 1.0 release of the game, and translates most if not all the japanese text in the game (I do not have an Xbox Live Gold subscription, or a region-free console, therefore it is impossible for me to verify how well the XBL-exclusive gamemodes work). Here is a short preview of the patch (Xenia&#8217;s sound emulation is broken for this game so I turned it off):</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Tetris: The Grand Master Ace - English Patch (1.0)" width="500" height="281" src="https://www.youtube.com/embed/YX_kbYU2UHA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>And here is one for the flash website: </p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="TGM Ace Promotional Website - English Patch (W.I.P)" width="500" height="281" src="https://www.youtube.com/embed/Rw7JoJRj71Y?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>For the most curious: no, I do not speak Japanese, and I did need to use <em>Google Translate </em>and <em>DeepL </em>a lot in spite of how much I despise MTL translations. Nevertheless, I consider knowing enough about the TGM series to have produced a faithful enough translation. I might get in touch with an actual translator who speaks Japanese once I come up with automated tools that would make it easier to insert text into the game/move it around.</p>
+
+
+
+<p>The process mainly involved looking at Japanese/Shift-JIS strings inside of <a href="https://wxmedit.github.io/" data-type="URL" data-id="https://wxmedit.github.io/"><strong>wxMEdit</strong></a> and writing Latin/ASCII text instead. I was pretty lucky that the game allowed to use both text encodings interchangeably, or at the same time if I wanted it to be so. Nowadays, there are a few tools that facilitate the romhacking/modding process of an Xbox360 game.</p>
+
+
+
+<p class="has-large-font-size"><strong>I &#8211; Unencrypting the executable (xextool)</strong></p>
+
+
+
+<p>By default, Xbox360 .xex files will most likely be encrypted, as developers would probably wish to protect their retail games. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="842" height="645" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI.png" alt="" class="wp-image-179" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI.png 842w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI-300x230.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI-768x588.png 768w" sizes="(max-width: 842px) 100vw, 842px"><figcaption class="wp-element-caption"><em>Encrypted .xex file, there is no way you&#8217;d find any string here</em></figcaption></figure>
+
+
+
+<p>This is not a problem for us though, as the CLI software <a href="https://digiex.net/threads/xextool-6-3-download.9523/" data-type="URL" data-id="https://digiex.net/threads/xextool-6-3-download.9523/"><strong>xextool</strong></a> can easily decrypt them, and even decompress them in case of compressed games.</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-bash" data-lang="Bash"><code>xextool -c u default.xex #Uncompresses the file
+xextool -c c default.xex #Compress modified file</code></pre></div>
+
+
+
+<p>The resulting uncompressed file has text that can be read through. Since the game uses the Shift-JIS encoding, rather than HxD or any other editor that would only have ASCII and a few Latin charsets, we will  use wxMEdit. Make sure you go to <strong>View &gt; Encoding</strong> and select Shift-JIS from there!</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1.png" alt="" class="wp-image-184" width="840" height="905" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1.png 847w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1-278x300.png 278w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1-768x828.png 768w" sizes="(max-width: 840px) 100vw, 840px"><figcaption class="wp-element-caption"><em>English and Japanese text appear directly before us!</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>II &#8211; Analyzing the executable (Ghidra)</strong></p>
+
+
+
+<p>Ghidra is an open-source (and free) reverse engineering tool developed by the NSA. This tool allows to &#8220;decompile&#8221; an executable, and convert its binary data into human-readable pseudocode, as well as many other features. We will use it to locate all of the strings the executable contains, as well as the locations they&#8217;re referenced to/used in the program. Due to the astronomical amount of features it presents, as well as the not-so-friendly interface of the program, I would recommend watching/reading a tutorial that explains how it works before getting your hands on the program by yourself. <strong><a href="https://youtu.be/qCEZC3cPc1s">Hilltop&#8217;s video</a></strong> is a pretty good start in my opinion.  <strong><a href="https://www.youtube.com/watch?v=AOfNzFJ5W7A&amp;pp=ygUTc3RydWN0cyB3aXRoIGdoaWRyYQ%3D%3D">h0x91B</a></strong> is also good, though most of his videos are in Russian and non-subbed.</p>
+
+
+
+<p>By default, it couldn&#8217;t do much with a .xex file, as it&#8217;s mostly used on PC-based executables and architectures in order to help with reversing a virus. Fortunately enough, Ghidra features the ability to create and install custom extensions, making possible the analysis of any architecture, console, or device, that would have such extensions developed. </p>
+
+
+
+<p>For the Xbox360, <a href="https://github.com/zeroKilo/XEXLoaderWV" data-type="URL" data-id="https://github.com/zeroKilo/XEXLoaderWV"><strong>XexLoaderWV</strong></a> is the go-to solution. After installing the extension, drag-and-dropping a .xex executable unto Ghidra&#8217;s window will allow it to be analyzes. After the analysis is done, Ghidra should point your cursor towards the game&#8217;s entry point. We want to go to <strong>Search &gt; Encoded Strings&#8230;</strong> and look for Shift-JIS encoded text. By default it limits the minimal length to 5 characters, I recommend decreasing it all the way down to 3, or even 2 (though that will recognize some data related to code as SJIS strings so beware).  Press<strong> &#8220;Create All&#8221;</strong> once the strings have been identified. They will now be shown under the section <strong>Window &gt; Defined Strings</strong>, and clicking any string will show where in the executable it is located.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="455" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1024x455.png" alt="" class="wp-image-188" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1024x455.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-300x133.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-768x341.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1536x682.png 1536w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47.png 1628w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption"><em>On the left, the game&#8217;s assembly, with the position of the strings we&#8217;ve identified. &#8220;XREF&#8221; shows the RAM address where the string is referenced (pointer or code). On the right, the list containing all the identified strings so far, their position is also told here.</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>III &#8211; Modifying the executable (wxMEdit)</strong></p>
+
+
+
+<p>Ghidra has the ability of analysing the executable, and even &#8220;Patching Instructions&#8221; in case you want to &#8220;modify&#8221; the game&#8217;s behaviour/data and see how it alters the code&#8217;s flow. Nevertheless, it never touches the actual .xex file. To modify it, if you don&#8217;t make your own scripts, you will need to use a Hex Editor to meet your ends.</p>
+
+
+
+<p>As you might have noticed, something is amiss between what Ghidra tells us, and what we&#8217;d see in the actual file. Even though our file is less than 8MB (4MB in TGM Ace&#8217;s case), the starting address of every string here is beyond 0x80000000, which makes it harder to see the association between what we see in Ghidra and what we see in a Hex Editor. In order to solve that, take a random string you&#8217;ve found before, then locate it in both your executable and ghidra. Substract ghidra&#8217;s position from the one you&#8217;ve found in the hex editor, and you get the <strong>offset</strong> you&#8217;ll need to apply when carrying over you analysis knowledge to the actual executable. </p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="543" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-1024x543.png" alt="" class="wp-image-191" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-1024x543.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-300x159.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-768x408.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj.png 1208w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1.png" alt="" class="wp-image-192" width="397" height="466" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1.png 793w, https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1-255x300.png 255w, https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1-768x903.png 768w" sizes="(max-width: 397px) 100vw, 397px"><figcaption class="wp-element-caption"><em>We substracted Ghidra&#8217;s address of the string &#8220;SHOT GUN&#8221; with its actual location in the executable</em></figcaption></figure>
+
+
+
+<p>At this point, you will probably ask me why we installed a 500MB tool for cybersec developers when we could just find all of the game&#8217;s strings in our hex editor. The first reason, is comfort. With Ghidra, the chance of missing a string is pretty low, all you have to do is scroll through the Defined Strings list and you will be good to go. By using a hex editor alone, you rely on your reading skills to make sure nothing was skipped, which can make you lose plenty of time on the long term. </p>
+
+
+
+<p>The second reason, more serious, is that by using Ghidra&#8217;s analysis tools, you can detect the <strong><a href="https://www.w3schools.com/c/c_pointers.php">pointers</a></strong> (variables that store the address of something) and the chunks of code that refer to a string&#8217;s location. In the case of <em>Tetris: The Grand Master Ace</em> this knowledge is pretty important as the pointers related to the strings will decide where our strings begin. What this means, is that if I expect a string at position 0x10 and another at position 0x20, then unless I modify my second string&#8217;s pointer afterwards, my first string can never be larger than 15 bytes.</p>
+
+
+
+<p>Changing the second string&#8217;s pointer so it would expect to find something at position 0x30 instead would allow me to write 16 more bytes into the first one, so it is important to be able to identify, and manipulate those pointers in order to not be limited by the game&#8217;s default behaviour.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="774" height="373" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb.png" alt="" class="wp-image-194" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb.png 774w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb-300x145.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb-768x370.png 768w" sizes="(max-width: 774px) 100vw, 774px"><figcaption class="wp-element-caption"><em>All of those values are of type &#8220;addr&#8221;. They store the address of a string, modifying any of them would show a different string.</em></figcaption></figure>
+
+
+
+<p>In my case, there was no need to offset values that much, but from time to time, especially when the initial string was made of no more than three kanji, there was a need to move by 4-5 bytes the addresses of some pointers.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="576" src="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-1024x576.png" alt="" class="wp-image-196" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-1024x576.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-300x169.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-768x432.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption">O<em>n this screen, all the pointers related to the controller&#8217;s buttons needed to be modified, as &#8220;Button&#8221; and &#8220;Trigger&#8221; took up far more space than the original Kanji. Fun Fact: same applies to the button prompts at the bottom-right!</em></figcaption></figure>
+
+
+
+<p>For more advanced romhacks, the game&#8217;s assembly can directly be modified if you know what you&#8217;re doing, the Xbox360 uses a PowerPC architecture so the instruction set is well-documented, and PowerPC compilers exist in case you want to convert C into X360-compatible assembly rather than writing it by hand. <strong><a href="https://godbolt.org/">Compiler Explorer</a></strong> gives a good glimpse at how C could be converted to assembly, feel free to play around with the -O compilation options as well.</p>
+
+
+
+<p>Once you&#8217;ve modified all of your strings, saved the custom executable, and tested the game out, it&#8217;s time to distribute the executable. The favoured way of doing so is by grabbing your <strong><a href="https://www.romhacking.net/utilities/704/">Delta Patcher</a></strong> and creating your own Delta Patch by using the original .xex file as a starting point. Make sure you encrypt/compress your modified file if the original was, and you&#8217;re good to go.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="717" height="491" src="https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1.png" alt="" class="wp-image-210" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1.png 717w, https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1-300x205.png 300w" sizes="(max-width: 717px) 100vw, 717px"><figcaption class="wp-element-caption"><em>It&#8217;s uncanny how easy it is.</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>Bonus: Translating the original Flash website (JPEXS + Adobe Flash CS6)</strong></p>
+
+
+
+<p>If you ever find some cool flash game or animation that&#8217;s japanese-only, it&#8217;s pretty &#8220;easy&#8221; to modify it to your liking. The <strong><a href="https://github.com/jindrapetrik/jpexs-decompiler">JPEXS Flash Decompiler</a></strong> comes with a tool that allows you to view all the sprites, texts, and scripts of an .swf animation.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="539" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-1024x539.png" alt="" class="wp-image-211" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-1024x539.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-300x158.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-768x404.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo.png 1034w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption"><em>Here we can see all the &#8220;shapes&#8221; the game features. Think of it as an .SVG file if you&#8217;re familiar with the format.</em></figcaption></figure>
+
+
+
+<p> It also allows you to use custom fonts, and/or extend the charset the original file supported.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="671" height="770" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn.png" alt="" class="wp-image-212" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn.png 671w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn-261x300.png 261w" sizes="(max-width: 671px) 100vw, 671px"><figcaption class="wp-element-caption"><em>The original font lacked most Latin characters. After decompiling its original name,and acquiring the full font, it was possible to reinsert the whole ASCII charset back into the file.</em></figcaption></figure>
+
+
+
+<p>At last, it allows you to modify the game&#8217;s texts and behaviour by editing its&#8217; ActionScript logic, and if that is not enough, you can always export the file as an .FLA and edit whatever else you need with Adobe Flash Professionnal CS6. As it is not the main topic of this blogpost, I will not elaborate on it much, but the short tutorials from <strong><a href="https://www.youtube.com/@SupHamster666">Serega </a></strong><a href="http://www.youtube.com/watch?v=HTWEwJ3QHGI"><strong>A.</strong></a> are pretty good, if we omit the disputable game choice that is used as example.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="512" src="https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1024x512.png" alt="" class="wp-image-214" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1024x512.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-300x150.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-768x384.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1536x768.png 1536w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c.png 1788w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption"><em>Flash games will be flash games amirite ?</em></figcaption></figure>
+
+
+
+<p>After applying all of his wise teachings, I was able to (almost) fully translate Arika&#8217;s flash website from 2005 into English, although I would lie if I said my translation is perfect, be it semantically or even visually.</p>
+
+
+
+<p class="has-large-font-size"><strong>Conclusion</strong></p>
+
+
+
+<p>Thanks to anyone who has read thus far! If you are interested in more writings about romhacking, modding and whatnot, feel free to check the rest of my blog, although my other postings don&#8217;t go into much depth about anything related to actual reverse engineering.</p>
+                    </div>
+
+                    <footer class="entry-footer">
+                        <div class="tags-links">Tags: <a href="https://sakimotor.github.io/tag/ghidra/" rel="tag">ghidra</a>, <a href="https://sakimotor.github.io/tag/hex/" rel="tag">hex</a>, <a href="https://sakimotor.github.io/tag/patching/" rel="tag">patching</a>, <a href="https://sakimotor.github.io/tag/reverse-engineering/" rel="tag">reverse engineering</a>, <a href="https://sakimotor.github.io/tag/translation/" rel="tag">translation</a>, <a href="https://sakimotor.github.io/tag/wxmedit/" rel="tag">wxmedit</a>, <a href="https://sakimotor.github.io/tag/xbox360/" rel="tag">xbox360</a>, <a href="https://sakimotor.github.io/tag/xextool/" rel="tag">xextool</a>
+</div>
+                        <div class="edit-link"></div>
+                    </footer>
+                </article>
+
+                <div id="disqus_thread">
+		</div>
+
+    </main>
+</div>
+
+</div> <!-- End of #primary -->
+
+<div id="secondary">
+            <h2>Sidebar</h2>
+        <p>Add widgets here from the Widgets panel in the WordPress admin.</p>
+    </div> <!-- End of #secondary -->
+
+</div> <!-- End of #content -->
+<footer>
+    <p>&copy; 2024 Saki&#039;s Romhacking Shenanigans | Powered by WordPress</p>
+    <p>Copyright© 2024 Saki&#039;s Romhacking Shenanigans Built with <a href="https://oxtheme.com/" target="_blank">OXTheme</a></p>
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">&#8679;</button>
+    <script type="text/javascript" id="dcl_comments-js-extra">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"sakimotor"};
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.21"},"disqusIdentifier":"168 https:\/\/sakimotor.github.io\/?p=168","disqusShortname":"sakimotor","disqusTitle":"Modding an Xbox 360 Executable (with Ghidra and a Hex Editor): In the making of an English Patch for Tetris: The Grand Master Ace","disqusUrl":"https:\/\/sakimotor.github.io\/2024\/11\/13\/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace\/","postId":"168"};
+var dclCustomVars = {"dcl_progress_text":"Loading..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-content/plugins/disqus-conditional-load/assets/js/embed-count-scroll.min.js?ver=11.0.6" id="dcl_comments-js"></script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-content/themes/oxtheme/js/back-to-top.js" id="oxtheme-back-to-top-js"></script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-content/themes/oxtheme/js/oxtheme-script.js?ver=1.0" id="oxtheme-script-js"></script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-includes/js/clipboard.min.js?ver=2.0.11" id="clipboard-js"></script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-content/plugins/highlighting-code-block/assets/js/prism.js?ver=1.6.1" id="hcb-prism-js"></script>
+<script type="text/javascript" src="https://sakimotor.github.io/wp-content/plugins/highlighting-code-block/build/js/hcb_script.js?ver=1.6.1" id="hcb-script-js"></script>
+    <script type="text/javascript">document.addEventListener('DOMContentLoaded', function () {
+            var menuToggle = document.querySelector('.menu-toggle');
+            var navMenu = document.querySelector('.nav-menu');
+
+            menuToggle.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            });
+        });</script>
+    </footer>
+</body>
+</html>

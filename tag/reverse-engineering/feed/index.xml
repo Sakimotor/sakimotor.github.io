@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>reverse engineering &#8211; Saki&#039;s Romhacking Shenanigans</title>
+	<atom:link href="https://sakimotor.github.io/tag/reverse-engineering/feed/" rel="self" type="application/rss+xml" />
+	<link>https://sakimotor.github.io</link>
+	<description>It is what it is!</description>
+	<lastBuildDate>Wed, 13 Nov 2024 21:24:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<item>
+		<title>Modding an Xbox 360 Executable (with Ghidra and a Hex Editor): In the making of an English Patch for Tetris: The Grand Master Ace</title>
+		<link>https://sakimotor.github.io/2024/11/13/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace/</link>
+					<comments>https://sakimotor.github.io/2024/11/13/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace/#disqus_thread</comments>
+		
+		<dc:creator><![CDATA[sakicore]]></dc:creator>
+		<pubDate>Wed, 13 Nov 2024 21:24:40 +0000</pubDate>
+				<category><![CDATA[Modding]]></category>
+		<category><![CDATA[Non classé]]></category>
+		<category><![CDATA[Romhacking]]></category>
+		<category><![CDATA[ghidra]]></category>
+		<category><![CDATA[hex]]></category>
+		<category><![CDATA[patching]]></category>
+		<category><![CDATA[reverse engineering]]></category>
+		<category><![CDATA[translation]]></category>
+		<category><![CDATA[wxmedit]]></category>
+		<category><![CDATA[xbox360]]></category>
+		<category><![CDATA[xextool]]></category>
+		<guid isPermaLink="false">https://sakimotor.github.io/?p=168</guid>
+
+					<description><![CDATA[A short summary about how I replaced most japanese text in TGMA with a quick hex editing job.]]></description>
+										<content:encoded><![CDATA[
+<p>Hello everyone, today I am glad to announce <strong><a href="https://github.com/Sakimotor/tgma_eng">the completion of a patch</a></strong> for the Xbox360-exclusive Arika game <em>Tetris: The Grand Master Ace</em>, as well as an English retranslation of the game&#8217;s <strong><a href="https://sakimotor.github.io/tgma_eng/">promotional website</a></strong> ! The patch can be applied to the retail 1.0 release of the game, and translates most if not all the japanese text in the game (I do not have an Xbox Live Gold subscription, or a region-free console, therefore it is impossible for me to verify how well the XBL-exclusive gamemodes work). Here is a short preview of the patch (Xenia&#8217;s sound emulation is broken for this game so I turned it off):</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Tetris: The Grand Master Ace - English Patch (1.0)" width="500" height="281" src="https://www.youtube.com/embed/YX_kbYU2UHA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>And here is one for the flash website: </p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="TGM Ace Promotional Website - English Patch (W.I.P)" width="500" height="281" src="https://www.youtube.com/embed/Rw7JoJRj71Y?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>For the most curious: no, I do not speak Japanese, and I did need to use <em>Google Translate </em>and <em>DeepL </em>a lot in spite of how much I despise MTL translations. Nevertheless, I consider knowing enough about the TGM series to have produced a faithful enough translation. I might get in touch with an actual translator who speaks Japanese once I come up with automated tools that would make it easier to insert text into the game/move it around.</p>
+
+
+
+<p>The process mainly involved looking at Japanese/Shift-JIS strings inside of <a href="https://wxmedit.github.io/" data-type="URL" data-id="https://wxmedit.github.io/"><strong>wxMEdit</strong></a> and writing Latin/ASCII text instead. I was pretty lucky that the game allowed to use both text encodings interchangeably, or at the same time if I wanted it to be so. Nowadays, there are a few tools that facilitate the romhacking/modding process of an Xbox360 game.</p>
+
+
+
+<p class="has-large-font-size"><strong>I &#8211; Unencrypting the executable (xextool)</strong></p>
+
+
+
+<p>By default, Xbox360 .xex files will most likely be encrypted, as developers would probably wish to protect their retail games. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="842" height="645" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI.png" alt="" class="wp-image-179" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI.png 842w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI-300x230.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_1i0stDN3xI-768x588.png 768w" sizes="(max-width: 842px) 100vw, 842px" /><figcaption class="wp-element-caption"><em>Encrypted .xex file, there is no way you&#8217;d find any string here</em></figcaption></figure>
+
+
+
+<p>This is not a problem for us though, as the CLI software <a href="https://digiex.net/threads/xextool-6-3-download.9523/" data-type="URL" data-id="https://digiex.net/threads/xextool-6-3-download.9523/"><strong>xextool</strong></a> can easily decrypt them, and even decompress them in case of compressed games.</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-bash" data-lang="Bash"><code>xextool -c u default.xex #Uncompresses the file
+xextool -c c default.xex #Compress modified file</code></pre></div>
+
+
+
+<p>The resulting uncompressed file has text that can be read through. Since the game uses the Shift-JIS encoding, rather than HxD or any other editor that would only have ASCII and a few Latin charsets, we will  use wxMEdit. Make sure you go to <strong>View &gt; Encoding</strong> and select Shift-JIS from there!</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1.png" alt="" class="wp-image-184" width="840" height="905" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1.png 847w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1-278x300.png 278w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_NaoKwDbct4-1-768x828.png 768w" sizes="(max-width: 840px) 100vw, 840px" /><figcaption class="wp-element-caption"><em>English and Japanese text appear directly before us!</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>II &#8211; Analyzing the executable (Ghidra)</strong></p>
+
+
+
+<p>Ghidra is an open-source (and free) reverse engineering tool developed by the NSA. This tool allows to &#8220;decompile&#8221; an executable, and convert its binary data into human-readable pseudocode, as well as many other features. We will use it to locate all of the strings the executable contains, as well as the locations they&#8217;re referenced to/used in the program. Due to the astronomical amount of features it presents, as well as the not-so-friendly interface of the program, I would recommend watching/reading a tutorial that explains how it works before getting your hands on the program by yourself. <strong><a href="https://youtu.be/qCEZC3cPc1s">Hilltop&#8217;s video</a></strong> is a pretty good start in my opinion.  <strong><a href="https://www.youtube.com/watch?v=AOfNzFJ5W7A&amp;pp=ygUTc3RydWN0cyB3aXRoIGdoaWRyYQ%3D%3D">h0x91B</a></strong> is also good, though most of his videos are in Russian and non-subbed.</p>
+
+
+
+<p>By default, it couldn&#8217;t do much with a .xex file, as it&#8217;s mostly used on PC-based executables and architectures in order to help with reversing a virus. Fortunately enough, Ghidra features the ability to create and install custom extensions, making possible the analysis of any architecture, console, or device, that would have such extensions developed. </p>
+
+
+
+<p>For the Xbox360, <a href="https://github.com/zeroKilo/XEXLoaderWV" data-type="URL" data-id="https://github.com/zeroKilo/XEXLoaderWV"><strong>XexLoaderWV</strong></a> is the go-to solution. After installing the extension, drag-and-dropping a .xex executable unto Ghidra&#8217;s window will allow it to be analyzes. After the analysis is done, Ghidra should point your cursor towards the game&#8217;s entry point. We want to go to <strong>Search &gt; Encoded Strings&#8230;</strong> and look for Shift-JIS encoded text. By default it limits the minimal length to 5 characters, I recommend decreasing it all the way down to 3, or even 2 (though that will recognize some data related to code as SJIS strings so beware).  Press<strong> &#8220;Create All&#8221;</strong> once the strings have been identified. They will now be shown under the section <strong>Window &gt; Defined Strings</strong>, and clicking any string will show where in the executable it is located.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="455" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1024x455.png" alt="" class="wp-image-188" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1024x455.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-300x133.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-768x341.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47-1536x682.png 1536w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_M7NzIppr47.png 1628w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>On the left, the game&#8217;s assembly, with the position of the strings we&#8217;ve identified. &#8220;XREF&#8221; shows the RAM address where the string is referenced (pointer or code). On the right, the list containing all the identified strings so far, their position is also told here.</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>III &#8211; Modifying the executable (wxMEdit)</strong></p>
+
+
+
+<p>Ghidra has the ability of analysing the executable, and even &#8220;Patching Instructions&#8221; in case you want to &#8220;modify&#8221; the game&#8217;s behaviour/data and see how it alters the code&#8217;s flow. Nevertheless, it never touches the actual .xex file. To modify it, if you don&#8217;t make your own scripts, you will need to use a Hex Editor to meet your ends.</p>
+
+
+
+<p>As you might have noticed, something is amiss between what Ghidra tells us, and what we&#8217;d see in the actual file. Even though our file is less than 8MB (4MB in TGM Ace&#8217;s case), the starting address of every string here is beyond 0x80000000, which makes it harder to see the association between what we see in Ghidra and what we see in a Hex Editor. In order to solve that, take a random string you&#8217;ve found before, then locate it in both your executable and ghidra. Substract ghidra&#8217;s position from the one you&#8217;ve found in the hex editor, and you get the <strong>offset</strong> you&#8217;ll need to apply when carrying over you analysis knowledge to the actual executable. </p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="543" src="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-1024x543.png" alt="" class="wp-image-191" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-1024x543.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-300x159.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj-768x408.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/wxmedit_aqzr5W3inj.png 1208w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" src="https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1.png" alt="" class="wp-image-192" width="397" height="466" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1.png 793w, https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1-255x300.png 255w, https://sakimotor.github.io/wp-content/uploads/2024/11/ApplicationFrameHost_TkuY2wHXLg-1-768x903.png 768w" sizes="(max-width: 397px) 100vw, 397px" /><figcaption class="wp-element-caption"><em>We substracted Ghidra&#8217;s address of the string &#8220;SHOT GUN&#8221; with its actual location in the executable</em></figcaption></figure>
+
+
+
+<p>At this point, you will probably ask me why we installed a 500MB tool for cybersec developers when we could just find all of the game&#8217;s strings in our hex editor. The first reason, is comfort. With Ghidra, the chance of missing a string is pretty low, all you have to do is scroll through the Defined Strings list and you will be good to go. By using a hex editor alone, you rely on your reading skills to make sure nothing was skipped, which can make you lose plenty of time on the long term. </p>
+
+
+
+<p>The second reason, more serious, is that by using Ghidra&#8217;s analysis tools, you can detect the <strong><a href="https://www.w3schools.com/c/c_pointers.php">pointers</a></strong> (variables that store the address of something) and the chunks of code that refer to a string&#8217;s location. In the case of <em>Tetris: The Grand Master Ace</em> this knowledge is pretty important as the pointers related to the strings will decide where our strings begin. What this means, is that if I expect a string at position 0x10 and another at position 0x20, then unless I modify my second string&#8217;s pointer afterwards, my first string can never be larger than 15 bytes.</p>
+
+
+
+<p>Changing the second string&#8217;s pointer so it would expect to find something at position 0x30 instead would allow me to write 16 more bytes into the first one, so it is important to be able to identify, and manipulate those pointers in order to not be limited by the game&#8217;s default behaviour.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="774" height="373" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb.png" alt="" class="wp-image-194" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb.png 774w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb-300x145.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_5am9uBBHAb-768x370.png 768w" sizes="(max-width: 774px) 100vw, 774px" /><figcaption class="wp-element-caption"><em>All of those values are of type &#8220;addr&#8221;. They store the address of a string, modifying any of them would show a different string.</em></figcaption></figure>
+
+
+
+<p>In my case, there was no need to offset values that much, but from time to time, especially when the initial string was made of no more than three kanji, there was a need to move by 4-5 bytes the addresses of some pointers.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="576" src="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-1024x576.png" alt="" class="wp-image-196" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-1024x576.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-300x169.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax-768x432.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/xenia_canary_eF7mTWgKax.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">O<em>n this screen, all the pointers related to the controller&#8217;s buttons needed to be modified, as &#8220;Button&#8221; and &#8220;Trigger&#8221; took up far more space than the original Kanji. Fun Fact: same applies to the button prompts at the bottom-right!</em></figcaption></figure>
+
+
+
+<p>For more advanced romhacks, the game&#8217;s assembly can directly be modified if you know what you&#8217;re doing, the Xbox360 uses a PowerPC architecture so the instruction set is well-documented, and PowerPC compilers exist in case you want to convert C into X360-compatible assembly rather than writing it by hand. <strong><a href="https://godbolt.org/">Compiler Explorer</a></strong> gives a good glimpse at how C could be converted to assembly, feel free to play around with the -O compilation options as well.</p>
+
+
+
+<p>Once you&#8217;ve modified all of your strings, saved the custom executable, and tested the game out, it&#8217;s time to distribute the executable. The favoured way of doing so is by grabbing your <strong><a href="https://www.romhacking.net/utilities/704/">Delta Patcher</a></strong> and creating your own Delta Patch by using the original .xex file as a starting point. Make sure you encrypt/compress your modified file if the original was, and you&#8217;re good to go.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="717" height="491" src="https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1.png" alt="" class="wp-image-210" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1.png 717w, https://sakimotor.github.io/wp-content/uploads/2024/11/DeltaPatcher_NB0utQB0Jt-1-300x205.png 300w" sizes="(max-width: 717px) 100vw, 717px" /><figcaption class="wp-element-caption"><em>It&#8217;s uncanny how easy it is.</em></figcaption></figure>
+
+
+
+<p class="has-large-font-size"><strong>Bonus: Translating the original Flash website (JPEXS + Adobe Flash CS6)</strong></p>
+
+
+
+<p>If you ever find some cool flash game or animation that&#8217;s japanese-only, it&#8217;s pretty &#8220;easy&#8221; to modify it to your liking. The <strong><a href="https://github.com/jindrapetrik/jpexs-decompiler">JPEXS Flash Decompiler</a></strong> comes with a tool that allows you to view all the sprites, texts, and scripts of an .swf animation.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="539" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-1024x539.png" alt="" class="wp-image-211" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-1024x539.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-300x158.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo-768x404.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_JGfToAIcGo.png 1034w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Here we can see all the &#8220;shapes&#8221; the game features. Think of it as an .SVG file if you&#8217;re familiar with the format.</em></figcaption></figure>
+
+
+
+<p> It also allows you to use custom fonts, and/or extend the charset the original file supported.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="671" height="770" src="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn.png" alt="" class="wp-image-212" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn.png 671w, https://sakimotor.github.io/wp-content/uploads/2024/11/javaw_gTU6LL4cbn-261x300.png 261w" sizes="(max-width: 671px) 100vw, 671px" /><figcaption class="wp-element-caption"><em>The original font lacked most Latin characters. After decompiling its original name,and acquiring the full font, it was possible to reinsert the whole ASCII charset back into the file.</em></figcaption></figure>
+
+
+
+<p>At last, it allows you to modify the game&#8217;s texts and behaviour by editing its&#8217; ActionScript logic, and if that is not enough, you can always export the file as an .FLA and edit whatever else you need with Adobe Flash Professionnal CS6. As it is not the main topic of this blogpost, I will not elaborate on it much, but the short tutorials from <strong><a href="https://www.youtube.com/@SupHamster666">Serega </a></strong><a href="http://www.youtube.com/watch?v=HTWEwJ3QHGI"><strong>A.</strong></a> are pretty good, if we omit the disputable game choice that is used as example.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="512" src="https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1024x512.png" alt="" class="wp-image-214" srcset="https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1024x512.png 1024w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-300x150.png 300w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-768x384.png 768w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c-1536x768.png 1536w, https://sakimotor.github.io/wp-content/uploads/2024/11/chrome_LzpPAncc4c.png 1788w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Flash games will be flash games amirite ?</em></figcaption></figure>
+
+
+
+<p>After applying all of his wise teachings, I was able to (almost) fully translate Arika&#8217;s flash website from 2005 into English, although I would lie if I said my translation is perfect, be it semantically or even visually.</p>
+
+
+
+<p class="has-large-font-size"><strong>Conclusion</strong></p>
+
+
+
+<p>Thanks to anyone who has read thus far! If you are interested in more writings about romhacking, modding and whatnot, feel free to check the rest of my blog, although my other postings don&#8217;t go into much depth about anything related to actual reverse engineering.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sakimotor.github.io/2024/11/13/modding-an-xbox-360-executable-with-ghidra-and-a-hex-editor-in-the-making-of-an-english-patch-for-tetris-the-grand-master-ace/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -12,13 +12,13 @@
 	<atom:link href="https://sakimotor.github.io/tag/jpsxdec/feed/" rel="self" type="application/rss+xml" />
 	<link>https://sakimotor.github.io</link>
 	<description>It is what it is!</description>
-	<lastBuildDate>Wed, 08 Feb 2023 15:57:22 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 08 Feb 2023 23:30:17 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.1.1</generator>
+	<generator>https://wordpress.org/?v=6.2.2</generator>
 	<item>
 		<title>Ripping Music from PS1 Games: A Basic Guide</title>
 		<link>https://sakimotor.github.io/2023/02/08/ripping-music-from-ps1-games-a-basic-guide/</link>
@@ -53,9 +53,8 @@
 <p>OK, if YouTube uploads don&#8217;t have a good quality, maybe the official albums do ? So you go on <a href="https://vgmdb.net/">VGMDB</a>, look the game up, and&#8230; No dice, the game isn&#8217;t on the website, or perhaps it is, but only with fan remixes.</p>
 
 
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="166" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1024x166.png" alt="" class="wp-image-124" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1024x166.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-300x48.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-768x124.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image.png 1324w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Literally 1984!</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img decoding="async" width="1024" height="166" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1024x166.png" alt="" class="wp-image-124" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1024x166.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-300x48.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-768x124.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image.png 1324w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Literally 1984!</em></figcaption></figure></div>
 
 
 <p></p>
@@ -74,12 +73,11 @@
 
 
 
-<p>When it comes to gameripping on the <em>PS1</em>, there are two possible outcomes: the game stores the music in the <em><strong>CD-DA</strong></em> format (which means it&#8217;s possible to rip the audio from it with a usual <em>AudioCD </em>ripping tool such as <em>Exact Audio Copy</em>, see <a href="https://eacguide.github.io/">this</a> guide) or it stores the music inside a proprietary <em>PS1 </em>format (<em>.XA</em>, <em>.VB/.VH </em>streams, etc&#8230;).</p>
+<p>When it comes to gameripping on the <em>PS1</em>, there are two possible outcomes: the game stores the music in the <em><strong>CD-DA</strong></em> format, which means it&#8217;s possible to rip the audio from it with a usual <em>AudioCD </em>ripping tool (such as <em>Exact Audio Copy</em>, see <a href="https://eacguide.github.io/">this</a> guide), or it stores the music inside a proprietary <em>PS1 </em>format (<em>.XA</em>, <em>.VB/.VH </em>streams, etc&#8230;).</p>
 
 
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="327" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1024x327.png" alt="" class="wp-image-133" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1024x327.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-300x96.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-768x245.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1536x491.png 1536w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5.png 1691w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Example of a CD-DA game: Street Boarders. All the tracks are detected and rippable by Exact Audio Copy</em>.</figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img decoding="async" width="1024" height="327" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1024x327.png" alt="" class="wp-image-133" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1024x327.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-300x96.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-768x245.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5-1536x491.png 1536w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-5.png 1691w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Example of a CD-DA game: Street Boarders. All the tracks are detected and rippable by Exact Audio Copy</em>.</figcaption></figure></div>
 
 
 <p></p>
@@ -89,9 +87,8 @@
 <p>In case of the latter, we can use a helpful <em>PS1 </em>ripping tool known as <em><strong><a href="https://github.com/m35/jpsxdec" data-type="URL" data-id="https://github.com/m35/jpsxdec">jpsxdec</a></strong></em>. This tool&#8217;s purpose is to parse all the data contained within a disc (as an .iso), and then locate any video, image, or audio from the game.</p>
 
 
-
-<figure class="wp-block-image size-full"><img decoding="async" width="648" height="341" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1.png" alt="" class="wp-image-129" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1.png 648w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-1-300x158.png 300w" sizes="(max-width: 648px) 100vw, 648px" /><figcaption class="wp-element-caption"><em>Example use of the software on Final Fantasy IX, taken from the Github page of the project.</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="648" height="341" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1.png" alt="" class="wp-image-129" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-1.png 648w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-1-300x158.png 300w" sizes="(max-width: 648px) 100vw, 648px" /><figcaption class="wp-element-caption"><em>Example use of the software on Final Fantasy IX, taken from the Github page of the project.</em></figcaption></figure></div>
 
 
 <p></p>
@@ -101,9 +98,8 @@
 <p>The usage of this tool is far from complicated: pressing &#8220;<em>Open and Analyze File</em>&#8221; will open an explorer window where we need to select the <em>ISO</em> we want to rip. Once a disc has been selected, theprogram will then show all the files it contains, with the type of media contained within said file if it&#8217;s known.</p>
 
 
-
-<figure class="wp-block-image size-full"><img decoding="async" width="705" height="518" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-2.png" alt="" class="wp-image-130" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-2.png 705w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-2-300x220.png 300w" sizes="(max-width: 705px) 100vw, 705px" /><figcaption class="wp-element-caption"><em>Using the tool on Micro Maniacs Racing.</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="705" height="518" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-2.png" alt="" class="wp-image-130" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-2.png 705w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-2-300x220.png 300w" sizes="(max-width: 705px) 100vw, 705px" /><figcaption class="wp-element-caption"><em>Using the tool on Micro Maniacs Racing.</em></figcaption></figure></div>
 
 
 <p></p>
@@ -113,9 +109,8 @@
 <p>By pressing on the &#8220;+&#8221; button next to a file, we can inspect its contents closely, such as with .XA files that contain multiple audio tracks. If we tick the checkbox next to a file, it will be saved to a certain directory when we hit the &#8220;<em>Save All Selected</em>&#8221; button in the bottom-right corner.</p>
 
 
-
-<figure class="wp-block-image size-full"><img decoding="async" width="909" height="610" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-3.png" alt="" class="wp-image-131" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-3.png 909w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-3-300x201.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-3-768x515.png 768w" sizes="(max-width: 909px) 100vw, 909px" /><figcaption class="wp-element-caption"><em>Exporting two audio tracks from <strong>MUSIC2.XA</strong> as <strong>.wav </strong>files.</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="909" height="610" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-3.png" alt="" class="wp-image-131" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-3.png 909w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-3-300x201.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-3-768x515.png 768w" sizes="(max-width: 909px) 100vw, 909px" /><figcaption class="wp-element-caption"><em>Exporting two audio tracks from <strong>MUSIC2.XA</strong> as <strong>.wav </strong>files.</em></figcaption></figure></div>
 
 
 <p></p>
@@ -125,9 +120,8 @@
 <p>Aaaand&#8230; That&#8217;s it, really. If we go to the directory we saved our files to, it will show them as intended.</p>
 
 
-
-<figure class="wp-block-image size-full"><img decoding="async" width="625" height="157" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-4.png" alt="" class="wp-image-132" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-4.png 625w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-4-300x75.png 300w" sizes="(max-width: 625px) 100vw, 625px" /><figcaption class="wp-element-caption"><em>Voila.</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="625" height="157" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-4.png" alt="" class="wp-image-132" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-4.png 625w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-4-300x75.png 300w" sizes="(max-width: 625px) 100vw, 625px" /><figcaption class="wp-element-caption"><em>Voila.</em></figcaption></figure></div>
 
 
 <p> Some games might play additionnal sounds on top of said tracks ingame (often the case with rhythm games such as <em>Paca Paca Passion</em>), or perhaps it will add some post-processing reverb, but in general this will be enough to gamerip the music from a PS1 game.</p>
@@ -137,9 +131,8 @@
 <p>In order to play gameripped files natively, i.e without converting them to .WAV, we can install <a href="https://www.foobar2000.org/download"><strong><em>foobar2000</em></strong></a>, as well as all the video game-related <em>components</em>, such as the <em><strong><a href="https://www.foobar2000.org/components/view/foo_input_vgmstream" data-type="URL" data-id="https://www.foobar2000.org/components/view/foo_input_vgmstream">VGMStream Player</a></strong></em>, <strong><em><a href="https://www.foobar2000.org/components/view/foo_gep">Game Emu Player</a></em></strong> and <em><strong><a href="https://www.foobar2000.org/components/view/foo_psf">PSF Decoder</a></strong></em>.</p>
 
 
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="306" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-1024x306.png" alt="" class="wp-image-136" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-1024x306.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-300x90.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-768x230.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6.png 1120w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Opening the extracted MUSIC1.XA file from before allows me to listen to it with no problem within foobar2000, neat.</em></figcaption></figure>
-
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img decoding="async" width="1024" height="306" src="https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-1024x306.png" alt="" class="wp-image-136" srcset="https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-1024x306.png 1024w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-300x90.png 300w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6-768x230.png 768w, https://sakimotor.github.io/wp-content/uploads/2023/02/image-6.png 1120w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em>Opening the extracted MUSIC1.XA file from before allows me to listen to it with no problem within foobar2000, neat.</em></figcaption></figure></div>
 
 
 <p></p>
